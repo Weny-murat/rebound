@@ -120,8 +120,16 @@ input:SetText(rezPayload:gsub('REBOUND:3','REBOUND:4')..'\\nITEM:5512=SHIFT-F')
 click('1. Preview'); click('2. Apply changes'); assert(bindings['SHIFT-E']=='MACRO ReboundSoulstone'); assert(bindings['SHIFT-F']=='ITEM Healthstone')
 click('Restore last import')
 local savedCount=saves; local oldS=bindings.S
+function UnitExists(unit) return unit=='pet' and false end
+function IsSpellKnown(id) return id==20707 end
+function IsUsableSpell(id) return id==20707,false end
+function GetInventoryItemLink() return 'Test artifact' end
 SlashCmdList.REBOUNDCHECK()
 assert(input:GetText():find('REBOUND CLIENT CHECK',1,true)); assert(bindings.S==oldS); assert(saves==savedCount)
+assert(input:GetText():find('Override API available: false',1,true))
+assert(input:GetText():find('Pet exists: false',1,true))
+assert(input:GetText():find('Main hand: Test artifact',1,true))
+assert(input:GetText():find('known=true usable=true resourceBlocked=false',1,true))
 assert(buttons['2. Apply changes'].disabled)
 ''')
 print('Item and diagnostic checks passed: V4, cache checks, duplicates, mixed macro/item, rollback, read-only report.')

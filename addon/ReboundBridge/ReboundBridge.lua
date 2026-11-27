@@ -178,13 +178,19 @@ SLASH_REBOUNDCHECK1='/reboundcheck'
 SlashCmdList.REBOUNDCHECK=function()
   local version,build=GetBuildInfo()
   local report={'REBOUND CLIENT CHECK','Client: '..tostring(version)..' build '..tostring(build)}
+  report[#report+1]='Override API available: '..tostring(type(FindSpellOverrideByID)=='function')
   local spec=GetSpecialization and GetSpecialization()
   if spec and GetSpecializationInfo then report[#report+1]='Spec: '..tostring(GetSpecializationInfo(spec)) end
   if UnitCreatureFamily then report[#report+1]='Pet family: '..tostring(UnitCreatureFamily('pet')) end
+  if UnitExists then report[#report+1]='Pet exists: '..tostring(UnitExists('pet')) end
+  if GetInventoryItemLink then report[#report+1]='Main hand: '..tostring(GetInventoryItemLink('player',16)) end
   for _,id in ipairs({196586,216698,190778,205223,234153,198590,17877,17962,48018,48020,108503,119898,119910,119905,119907,119909,171140,171152,20707,61999}) do
     local name=GetSpellInfo(id)
     local override=FindSpellOverrideByID and FindSpellOverrideByID(id)
-    report[#report+1]=id..' '..tostring(name)..' learned='..tostring(IsPlayerSpell(id))..' override='..tostring(override)
+    local known=IsSpellKnown and IsSpellKnown(id)
+    local usable,noResource
+    if IsUsableSpell then usable,noResource=IsUsableSpell(id) end
+    report[#report+1]=id..' '..tostring(name)..' learned='..tostring(IsPlayerSpell(id))..' known='..tostring(known)..' usable='..tostring(usable)..' resourceBlocked='..tostring(noResource)..' override='..tostring(override)
     if GetSpellDescription and (id==17877 or id==108503 or id==48018) then
       report[#report+1]=GetSpellDescription(id) or '(no description)'
     end

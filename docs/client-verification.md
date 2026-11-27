@@ -1,7 +1,9 @@
-# 7.3.5 client verification — pending execution
+# 7.3.5 client verification — first report received
 
 These checks require the actual server/client. Automated mock tests are **not**
-evidence of real-client compatibility. No row below has been marked passed.
+evidence of real-client compatibility. A user-supplied Destruction report from
+build 26972 establishes some spell availability, not successful casts or imports.
+See [first report findings](client-report-26972-destruction.md).
 
 ## Read-only report
 
@@ -9,7 +11,8 @@ evidence of real-client compatibility. No row below has been marked passed.
 2. Select the intended spec/talents and summon the relevant pet.
 3. Run `/reboundcheck`; the addon opens a selected report. Copy with Ctrl+C.
 4. Share that report for comparison with the app. It contains client build,
-   spec ID, pet family, spell availability/overrides/descriptions and Healthstone
+   spec ID, pet existence/family, equipped main hand, spell availability/usability/
+   overrides/descriptions and Healthstone
    count. It contains no character/account name and performs no writes or casts.
 5. Repeat for Supremacy Doomguard/Infernal and Sacrifice if used. Run after casting
    Sacrifice as well as selecting its talent: talent selection alone is not the buff.
@@ -24,12 +27,12 @@ observed result rather than assuming the planner's recommendation proves it.
 
 | Check | Expected observation | Status |
 | --- | --- | --- |
-| Artifact availability | Selected spec's artifact ability is actually learned; disable toggle if absent | Pending |
-| Drain Life / Drain Soul | Spellbook and report establish which action exists for each Warlock spec | Pending |
+| Artifact availability | Check learned flag against equipped artifact and actual spellbook availability | Destruction: learned=false reported; equipment/usable check pending |
+| Drain Life / Drain Soul | Spellbook and report establish which action exists for each Warlock spec | Destruction: Drain Life learned=true, Drain Soul learned=false; other specs pending |
 | Shadowburn / Conflagrate | Compare learned/override values and usable spellbook entries before/after talent; decide replacement behavior from this client | Pending |
-| Demonic Circle | One binding summons then teleports as described by the source; verify movement-slow removal separately | Pending |
+| Demonic Circle | One binding summons then teleports as described by the source; verify movement-slow removal separately | 48018 learned=true and matching tooltip; cast/teleport test pending |
 | Command Demon | Felhunter interrupts; Doomguard Shadow Lock; Infernal Meteor Strike; Imp healing; Voidwalker taunt; Succubus knockback | Pending |
-| Sacrifice | Determine whether a usable pet command is retained on this server; default remains suppressed until proven | Pending |
+| Sacrifice | Determine whether a usable pet command is retained on this server; default remains suppressed until proven | Sacrifice and Command Demon learned=true; buff/usable command not established |
 | Service | Permanent pet is unchanged when the independently selected Service demon is summoned | Pending |
 | Healthstone | With stone in bags and health missing, bound item uses a charge; it does not create a stone | Pending |
 | No Healthstone | Preview warns if item name is cached; missing cache blocks preview and asks to inspect/create a stone | Pending |
