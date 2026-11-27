@@ -9,7 +9,7 @@ See [first report findings](client-report-26972-destruction.md).
 
 1. Install the current `addon/ReboundBridge` folder and restart WoW or reload UI.
 2. Select the intended spec/talents and summon the relevant pet.
-3. Run `/reboundcheck`; the addon opens a selected report. Copy with Ctrl+C.
+3. Open `/rebound` and click **Client report**; copy the selected report with Ctrl+C.
 4. Share that report for comparison with the app. It contains client build,
    spec ID, pet existence/family, equipped main hand, spell availability/usability/
    overrides/descriptions and Healthstone
@@ -17,8 +17,8 @@ See [first report findings](client-report-26972-destruction.md).
 5. Repeat for Supremacy Doomguard/Infernal and Sacrifice if used. Run after casting
    Sacrifice as well as selecting its talent: talent selection alone is not the buff.
 
-The report deliberately is not an import payload; do not press Apply on it.
-It invalidates any prior import preview.
+The report is in a separate output view, never in the import text field. It
+invalidates any prior preview; **Import text** returns to your preserved draft.
 
 ## Manual behavior checks
 

@@ -9,18 +9,24 @@ lua = LuaRuntime()
 lua.execute('''
 buttons = {}; objects = {}; bindings = {W='MOVEFORWARD',UP='MOVEFORWARD',S='MOVEBACKWARD',DOWN='MOVEBACKWARD',A='TURNLEFT',D='TURNRIGHT',Q='STRAFELEFT',E='STRAFERIGHT',R='REPLY'}
 local methods = {}
-function methods:SetText(text) self.text=text; if self.kind=='Button' then buttons[text]=self end end
+function methods:SetText(text) self.text=text; if self.kind=='Button' then buttons[text]=self end; if rawget(self,'OnTextChanged') then self.OnTextChanged(self) end end
 function methods:GetText() return self.text or '' end
 function methods:SetScript(event,fn) self[event]=fn end
 function methods:Disable() self.disabled=true end
 function methods:Enable() self.disabled=false end
 function methods:CreateFontString() return CreateFrame('Font') end
-function methods:IsShown() return false end
+function methods:IsShown() return self.shown end
+function methods:Show() self.shown=true end
+function methods:Hide() self.shown=false; if rawget(self,'OnHide') then self.OnHide(self) end end
+function methods:SetFocus() self.focused=true end
+function methods:ClearFocus() self.focused=false end
 setmetatable(methods,{__index=function() return function() end end})
-function CreateFrame(kind)
-  local obj=setmetatable({kind=kind},{__index=methods})
+function CreateFrame(kind,name)
+  local obj=setmetatable({kind=kind,shown=true},{__index=methods})
   objects[#objects+1]=obj
-  if kind=='EditBox' then input=obj end
+  if name then _G[name]=obj end
+  if name=='ReboundImportText' then input=obj end
+  if name=='ReboundOutputText' then output=obj end
   return obj
 end
 UIParent={}; ChatFontNormal={}; SlashCmdList={}
@@ -124,12 +130,29 @@ function UnitExists(unit) return unit=='pet' and false end
 function IsSpellKnown(id) return id==20707 end
 function IsUsableSpell(id) return id==20707,false end
 function GetInventoryItemLink() return 'Test artifact' end
-SlashCmdList.REBOUNDCHECK()
-assert(input:GetText():find('REBOUND CLIENT CHECK',1,true)); assert(bindings.S==oldS); assert(saves==savedCount)
-assert(input:GetText():find('Override API available: false',1,true))
-assert(input:GetText():find('Pet exists: false',1,true))
-assert(input:GetText():find('Main hand: Test artifact',1,true))
-assert(input:GetText():find('known=true usable=true resourceBlocked=false',1,true))
+local draft=input:GetText()
+click('Client report')
+assert(output:GetText():find('REBOUND CLIENT CHECK',1,true)); assert(bindings.S==oldS); assert(saves==savedCount)
+assert(input:GetText()==draft)
+assert(output:GetText():find('Override API available: false',1,true))
+assert(output:GetText():find('Pet exists: false',1,true))
+assert(output:GetText():find('Main hand: Test artifact',1,true))
+assert(output:GetText():find('known=true usable=true resourceBlocked=false',1,true))
 assert(buttons['2. Apply changes'].disabled)
 ''')
 print('Item and diagnostic checks passed: V4, cache checks, duplicates, mixed macro/item, rollback, read-only report.')
+lua.execute('''
+assert(SLASH_REBOUNDBRIDGE1=='/rebound'); assert(SLASH_REBOUNDCHECK1==nil)
+local draft=input:GetText(); local saved=saves
+click('Help / first import'); assert(output:GetText():find('FIRST IMPORT',1,true)); assert(input:GetText()==draft)
+click('Import text'); assert(input:GetText()==draft); assert(input.focused); assert(buttons['2. Apply changes'].disabled)
+input:SetText(payload); click('1. Preview'); assert(output:GetText():find('Incinerate',1,true)); assert(not buttons['2. Apply changes'].disabled)
+click('Client report'); assert(buttons['2. Apply changes'].disabled); assert(input:GetText()==payload); assert(saves==saved)
+click('Import text'); click('1. Preview'); click('2. Apply changes'); assert(bindings.S=='SPELL Incinerate')
+click('Restore last import')
+input:SetText(payload); click('1. Preview'); input:SetText(payload..'\\n'); assert(buttons['2. Apply changes'].disabled)
+click('1. Preview'); ReboundBridgeFrame:Hide(); assert(buttons['2. Apply changes'].disabled)
+SlashCmdList.REBOUNDBRIDGE(); assert(ReboundBridgeFrame:IsShown()); assert(input:GetText()==payload..'\\n')
+input.OnEscapePressed(input); assert(not ReboundBridgeFrame:IsShown()); assert(not input.focused)
+''')
+print('Single-command menu checks passed: report/help navigation, preserved draft, scrollable preview, stale apply prevention, close/reopen.')

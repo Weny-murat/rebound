@@ -1,18 +1,40 @@
 local f = CreateFrame('Frame', 'ReboundBridgeFrame', UIParent)
-f:SetSize(640, 540); f:SetPoint('CENTER'); f:SetFrameStrata('DIALOG')
+f:SetSize(740, 640); f:SetPoint('CENTER'); f:SetFrameStrata('DIALOG')
 f:SetBackdrop({bgFile='Interface/Tooltips/UI-Tooltip-Background', edgeFile='Interface/Tooltips/UI-Tooltip-Border', tile=true,tileSize=16,edgeSize=16,insets={left=4,right=4,top=4,bottom=4}})
 f:SetBackdropColor(0.06,0.08,0.12,1); f:EnableMouse(true); f:Hide()
 local title = f:CreateFontString(nil,'OVERLAY','GameFontNormalLarge')
-title:SetPoint('TOP',0,-20); title:SetText('Rebound / Legion import (experimental)')
+title:SetPoint('TOP',0,-20); title:SetText('Rebound / Control panel')
+f:SetMovable(true); f:SetClampedToScreen(true); f:RegisterForDrag('LeftButton')
+f:SetScript('OnDragStart',function(self) self:StartMoving() end)
+f:SetScript('OnDragStop',function(self) self:StopMovingOrSizing() end)
 local close = CreateFrame('Button',nil,f,'UIPanelCloseButton'); close:SetPoint('TOPRIGHT',-4,-4)
 local scroll = CreateFrame('ScrollFrame',nil,f,'UIPanelScrollFrameTemplate')
-scroll:SetPoint('TOPLEFT',24,-55); scroll:SetSize(565,210)
-local input = CreateFrame('EditBox',nil,scroll)
-input:SetMultiLine(true); input:SetFontObject(ChatFontNormal); input:SetWidth(560); input:SetAutoFocus(false); input:SetMaxLetters(12000); scroll:SetScrollChild(input)
+scroll:SetPoint('TOPLEFT',24,-125); scroll:SetSize(665,345)
+local input = CreateFrame('EditBox','ReboundImportText',scroll)
+input:SetMultiLine(true); input:SetFontObject(ChatFontNormal); input:SetWidth(660); input:SetAutoFocus(false); input:SetMaxLetters(12000); scroll:SetScrollChild(input)
+local outputScroll = CreateFrame('ScrollFrame',nil,f,'UIPanelScrollFrameTemplate')
+outputScroll:SetPoint('TOPLEFT',24,-125); outputScroll:SetSize(665,345); outputScroll:Hide()
+local output = CreateFrame('EditBox','ReboundOutputText',outputScroll)
+output:SetMultiLine(true); output:SetFontObject(ChatFontNormal); output:SetWidth(660); output:SetAutoFocus(false); output:SetMaxLetters(30000); outputScroll:SetScrollChild(output)
+local section = f:CreateFontString(nil,'OVERLAY','GameFontHighlight')
+section:SetPoint('TOPLEFT',24,-92); section:SetSize(680,28); section:SetJustifyH('LEFT')
+section:SetText('Import: paste the desktop app export here (Ctrl+V), then Preview.')
 local status = f:CreateFontString(nil,'OVERLAY','GameFontHighlightSmall')
-status:SetPoint('TOPLEFT',24,-285); status:SetSize(590,170); status:SetJustifyH('LEFT'); status:SetJustifyV('TOP')
+status:SetPoint('TOPLEFT',24,-490); status:SetSize(690,85); status:SetJustifyH('LEFT'); status:SetJustifyV('TOP')
 status:SetText('Paste import text, then preview. Apply overwrites the listed keys in the current account/character binding set. Restore overwrites those keys with the previous values.')
 local pending, apply
+local function showOutput(heading,text,selectAll)
+  input:ClearFocus(); scroll:Hide(); outputScroll:Show(); outputScroll:SetVerticalScroll(0)
+  section:SetText(heading); output:SetText(text)
+  if selectAll then output:SetFocus(); output:HighlightText() else output:ClearFocus() end
+end
+local function showImport()
+  pending=nil; if apply then apply:Disable() end
+  output:ClearFocus(); outputScroll:Hide(); scroll:Show()
+  section:SetText('Import: paste the desktop app export here (Ctrl+V), then Preview.')
+  status:SetText('Your draft is preserved while viewing reports/help. Preview shows every change before Apply is enabled.')
+  input:SetFocus()
+end
 local function button(label,x,action)
   local b=CreateFrame('Button',nil,f,'UIPanelButtonTemplate')
   b:SetSize(180,28); b:SetPoint('BOTTOMLEFT',x,24); b:SetText(label); b:SetScript('OnClick',action)
@@ -119,9 +141,10 @@ button('1. Preview',24,function()
   if #rows==0 or #rows>80 then status:SetText('Expected 1 to 80 assignments.'); return end
   pending={rows=rows,keys=oldKeys,set=GetCurrentBindingSet(),owner=owner(),movement=version~='REBOUND:1:70305'}
   for _,line in ipairs(report) do print('Rebound: '..line) end
-  status:SetText('Full preview printed in chat. Review it before applying.\n'..(pending.movement and 'Movement keys will be replaced, including old secondary movement keys.\n' or '')..table.concat(report,'\n')); apply:Enable()
+  showOutput('Preview: review all changes below; nothing has been applied.',table.concat(report,'\n'))
+  status:SetText('Preview ready. Apply changes uses the current account/character binding set.\n'..(pending.movement and 'All movement bindings will be replaced, including secondary keys.\n' or '')..'Return to Import text to edit the draft.'); apply:Enable()
 end)
-apply=button('2. Apply changes',224,function()
+apply=button('2. Apply changes',274,function()
   if not ready() or not pending then return end
   if pending.set~=GetCurrentBindingSet() or pending.owner~=owner() then status:SetText('Binding set changed. Preview again.'); return end
   for _,row in ipairs(pending.rows) do
@@ -164,18 +187,20 @@ apply=button('2. Apply changes',224,function()
 end)
 apply:Disable()
 input:SetScript('OnTextChanged',function() pending=nil; apply:Disable() end)
-button('Restore last import',424,function()
+button('Restore last import',524,function()
   if not ready() then return end
   if not ReboundBackup or ReboundBackup.owner~=owner() or ReboundBackup.set~=GetCurrentBindingSet() then status:SetText('No backup for this character/binding set.'); return end
   if restore(ReboundBackup) then status:SetText('Previous bindings restored.'); ReboundBackup=nil else status:SetText('Restore failed. Check manually.') end
   pending=nil; apply:Disable()
 end)
 SLASH_REBOUNDBRIDGE1='/rebound'
-SlashCmdList.REBOUNDBRIDGE=function() if f:IsShown() then f:Hide() else f:Show() end end
+SlashCmdList.REBOUNDBRIDGE=function() if f:IsShown() then f:Hide() else f:Show(); showImport() end end
+input:SetScript('OnEscapePressed',function(self) self:ClearFocus(); f:Hide() end)
+output:SetScript('OnEscapePressed',function(self) self:ClearFocus(); f:Hide() end)
+f:SetScript('OnHide',function() input:ClearFocus(); output:ClearFocus(); pending=nil; apply:Disable() end)
 
 -- Read-only evidence collection; never changes bindings or casts abilities.
-SLASH_REBOUNDCHECK1='/reboundcheck'
-SlashCmdList.REBOUNDCHECK=function()
+local function clientReport()
   local version,build=GetBuildInfo()
   local report={'REBOUND CLIENT CHECK','Client: '..tostring(version)..' build '..tostring(build)}
   report[#report+1]='Override API available: '..tostring(type(FindSpellOverrideByID)=='function')
@@ -197,6 +222,20 @@ SlashCmdList.REBOUNDCHECK=function()
   end
   report[#report+1]='Healthstones in bags: '..tostring(GetItemCount(5512))
   report[#report+1]='Read-only report. Import this text nowhere; copy it for review.'
-  pending=nil; apply:Disable(); input:SetText(table.concat(report,'\n')); f:Show(); input:SetFocus(); input:HighlightText()
+  pending=nil; apply:Disable(); f:Show(); showOutput('Client report: selected for copying (Ctrl+C). Import draft is preserved.',table.concat(report,'\n'),true)
   status:SetText('Client report selected. Ctrl+C to copy. No bindings were changed. Test casts manually using the checklist.')
 end
+
+local function menuButton(label,x,action)
+  local b=CreateFrame('Button',nil,f,'UIPanelButtonTemplate')
+  b:SetSize(210,28); b:SetPoint('TOPLEFT',x,-52); b:SetText(label); b:SetScript('OnClick',action)
+  return b
+end
+menuButton('Import text',24,showImport)
+menuButton('Client report',264,clientReport)
+menuButton('Help / first import',504,function()
+  pending=nil; apply:Disable()
+  showOutput('Help: one entry command, /rebound.',
+    'FIRST IMPORT\n\n1. In the desktop app, match your spec and talents. Disable artifact abilities you have not learned.\n2. Click Export to WoW, then Copy text.\n3. In WoW, type /rebound. Click Import text, click the text area and press Ctrl+V.\n4. Click 1. Preview. Scroll through every assignment and previous binding.\n5. If the preview is correct, click 2. Apply changes.\n6. Test outside combat. Restore last import returns the previous bindings.\n\nHEALTHSTONE\nUse Healthstone is an ITEM action, not Create Healthstone. Have a stone in your bags. The preview shows its exact key.\n\nMOUSEOVER COMBAT REZ\nIf enabled in the app, create the named macro shown there using the game Macros window before previewing. Otherwise turn that option off for your first test.\n\nCLIENT REPORT\nClick Client report, then Ctrl+C. This reads information only. Import text returns to your preserved draft.\n\nApply and Restore are blocked during combat. Imports change the current account/character binding set; account-wide changes affect other characters using that set.')
+  status:SetText('Nothing has been changed. Click Import text to begin. The panel can be moved by dragging its background.')
+end)

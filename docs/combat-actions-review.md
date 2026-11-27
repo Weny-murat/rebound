@@ -52,6 +52,6 @@ Sacrifice commands cannot be proved from incomplete source labels. Their current
 catalog behavior is preserved instead of guessing an incompatible replacement.
 
 All real-client acceptance steps are in [client verification](client-verification.md).
-`/reboundcheck` provides read-only evidence. Full catalog certification for every
+**/rebound → Client report** provides read-only evidence. Full catalog certification for every
 spec remains open until that evidence is collected; no mock test is labeled a
 real-client pass.

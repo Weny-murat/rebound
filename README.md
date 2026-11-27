@@ -88,8 +88,13 @@ by Git. Switching specs replaces the current in-memory layout: save it first.
 
 ## WoW addon
 
-Copy `addon/ReboundBridge` into WoW `Interface/AddOns`, restart WoW, open `/rebound`
-and paste the app export. Preview lists changes in the addon and game chat. Apply
+Copy `addon/ReboundBridge` into WoW `Interface/AddOns`, restart WoW, then open
+**`/rebound`**. This is the single entry command. In the desktop app choose
+**Export to WoW → Copy text**, then in the addon choose **Import text** and paste
+with Ctrl+V. **1. Preview** shows every change in a scrollable view; **2. Apply
+changes** saves the reviewed bindings. **Client report** generates copyable
+diagnostics without replacing your import draft. **Help / first import** explains
+the whole flow in the same panel. Preview also lists changes in game chat. Apply
 updates the current account/character binding set; Restore restores the last import.
 Account-wide binding changes also affect other characters using that binding set.
 
@@ -172,6 +177,6 @@ Current review checkpoints: [roadmap](docs/ROADMAP.md) and
 [Destruction spell audit](docs/destruction-review.md). These separate verified
 catalog changes from proposed priorities and outstanding real-client checks.
 
-Use `/reboundcheck` with the updated addon to copy a read-only client report for
+Use **/rebound → Client report** with the updated addon to copy a read-only report for
 the remaining version-specific checks. It changes no bindings and casts nothing.
 See [client verification](docs/client-verification.md).
