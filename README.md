@@ -40,6 +40,7 @@ directory**, including its DLLs and `data`, not the executable alone.
 
 - Destruction and Affliction Warlock; Frost and Blood Death Knight.
 - Seven talent rows per spec, active spell grants and replacement spells.
+- Destruction Dimensional Rift with an explicit artifact-unlocked toggle.
 - Drag and drop, searchable key menus, and hover key capture with modifiers.
 - Configurable movement and strafe bindings, movement locking, excluded keys,
   and reset to default.
@@ -149,6 +150,10 @@ See [assets/ATTRIBUTION.md](assets/ATTRIBUTION.md) and the per-file source manif
 Spell icons belong to Blizzard Entertainment; the keyboard image has its own
 CC BY-SA 4.0 license. No blanket license over third-party assets is implied.
 
-The baseline spell catalog is incomplete. PvP talents, artifact abilities, rotation
+The baseline spell catalog is incomplete. PvP talents, other artifact abilities, rotation
 simulation and importing existing game bindings are not implemented. Turkish
 special characters and unsupported keys are visible but cannot be exported.
+
+Current review checkpoints: [roadmap](docs/ROADMAP.md) and
+[Destruction spell audit](docs/destruction-review.md). These separate verified
+catalog changes from proposed priorities and outstanding real-client checks.

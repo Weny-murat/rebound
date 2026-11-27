@@ -368,6 +368,8 @@ class _WorkshopState extends State<Workshop> {
                             );
                             profile = Profile(s)
                               ..mouseoverCombatRez = profile.mouseoverCombatRez
+                              ..artifactAbilityEnabled =
+                                  profile.artifactAbilityEnabled
                               ..keyboardLayout = profile.keyboardLayout
                               ..keyboardAppearance = profile.keyboardAppearance
                               ..sideButtons = profile.sideButtons
@@ -388,6 +390,14 @@ class _WorkshopState extends State<Workshop> {
                     label: const Text('Two-side-button mouse'),
                     onSelected: (v) => setState(() => profile.sideButtons = v),
                   ),
+                  if (profile.spec == 'Warlock · Destruction')
+                    FilterChip(
+                      selected: profile.artifactAbilityEnabled,
+                      label: const Text('Artifact unlocked: Dimensional Rift'),
+                      onSelected: (value) => setState(
+                        () => profile.setArtifactAbilityEnabled(value),
+                      ),
+                    ),
                   SizedBox(
                     width: 220,
                     child: DropdownButtonFormField<String>(

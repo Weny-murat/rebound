@@ -47,6 +47,32 @@ Recommendation recommendAbility(
   Set<int> talents,
   String pet,
 ) {
+  if (spec == 'Warlock · Destruction') {
+    if (id == 196586) {
+      return const Recommendation(
+        17,
+        'Artifact combat ability: prioritize an easy Normal key. Disable if your character has not unlocked it.',
+      );
+    }
+    if (id == 1454) {
+      if (talents.contains(205148)) {
+        return const Recommendation(
+          null,
+          'Reverse Entropy restores mana through Chaos Bolt / Rain of Fire; Life Tap is optional backup, not a core binding.',
+        );
+      }
+      if (talents.contains(235157)) {
+        return const Recommendation(
+          18,
+          'Empowered Life Tap: maintain the damage buff as well as mana; easy Normal access.',
+        );
+      }
+      return const Recommendation(
+        22,
+        'Mana recovery: retain Normal access after primary damage spells.',
+      );
+    }
+  }
   if (id == 20707 || id == 61999) {
     return const Recommendation(
       29,

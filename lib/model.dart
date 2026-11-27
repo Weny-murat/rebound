@@ -97,6 +97,7 @@ const catalogs = <String, List<Ability>>{
     Ability(17962, 'Conflagrate', 'Frequent use'),
     Ability(116858, 'Chaos Bolt', 'Frequent use'),
     Ability(5740, 'Rain of Fire', 'Area effect'),
+    Ability(196586, 'Dimensional Rift', 'Artifact'),
     Ability(80240, 'Havoc', 'Utility'),
     Ability(104773, 'Unending Resolve', 'Defensive'),
     ...warlockCommon,
@@ -213,6 +214,12 @@ class Profile {
   String keyboardLayout = 'tr';
   String keyboardAppearance = 'classic';
   bool mouseoverCombatRez = false;
+  bool artifactAbilityEnabled = true;
+  void setArtifactAbilityEnabled(bool value) {
+    artifactAbilityEnabled = value;
+    suggest(preserveBindings: true);
+  }
+
   List<List<String>> get displayedKeyboardRows =>
       keyboardLayout == 'en' ? englishKeyboardRows : keyboardRows;
   String activePet = 'felhunter';
@@ -281,8 +288,10 @@ class Profile {
   Iterable<Talent> get chosenTalents => talentRows
       .expand((r) => r)
       .where((t) => selectedTalents.containsValue(t.id));
-  Set<int> get hiddenAbilities =>
-      chosenTalents.expand((t) => t.replaces).toSet();
+  Set<int> get hiddenAbilities => {
+    ...chosenTalents.expand((t) => t.replaces),
+    if (!artifactAbilityEnabled) 196586,
+  };
   List<Ability> get available {
     final granted = chosenTalents.expand((t) => t.grants).toList();
     final all = <int, Ability>{};
@@ -546,6 +555,7 @@ class Profile {
     'keyboardLayout': keyboardLayout,
     'keyboardAppearance': keyboardAppearance,
     'mouseoverCombatRez': mouseoverCombatRez,
+    'artifactAbilityEnabled': artifactAbilityEnabled,
     'movement': movement,
     'movementLocked': movementLocked,
     'excludedKeys': excludedKeys.toList(),
@@ -561,6 +571,7 @@ class Profile {
     final p = Profile(data['spec'] as String);
     p.sideButtons = data['sideButtons'] as bool;
     p.mouseoverCombatRez = data['mouseoverCombatRez'] as bool? ?? false;
+    p.artifactAbilityEnabled = data['artifactAbilityEnabled'] as bool? ?? true;
     if (keyboardLayouts.containsKey(data['keyboardLayout'])) {
       p.keyboardLayout = data['keyboardLayout'] as String;
     }
@@ -591,10 +602,12 @@ class Profile {
     p.enabled
       ..clear()
       ..addAll((data['enabled'] as List).cast<int>());
+    var catalogExpanded = false;
     for (final ability in catalogs[p.spec]!) {
       if (!p.abilities.any((a) => a.id == ability.id)) {
         p.abilities.add(ability);
         p.enabled.add(ability.id);
+        catalogExpanded = true;
       }
     }
     (data['bindings'] as Map).forEach((k, v) {
@@ -618,6 +631,8 @@ class Profile {
     if (data['recommendationVersion'] != 3) {
       p.suggest();
       p.recommendationMigrated = true;
+    } else if (catalogExpanded) {
+      p.suggest(preserveBindings: true);
     }
     return p;
   }

@@ -957,5 +957,12 @@
     "source": "https://legion-shoot.tauri.hu/?spell=253593",
     "image": "https://legion-static.tauri.hu/images/icons/large/achievement_dungeon_icecrown_frostmourne.png",
     "sha256": "509a2872e0378dd06ac111876de4fa362620f58644cd2f617e9c0eff76368b34"
+  },
+  {
+    "spellId": 196586,
+    "icon": "spell_warlock_demonicportal_purple",
+    "source": "https://legion-shoot.tauri.hu/?spell=196586",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_warlock_demonicportal_purple.png",
+    "sha256": "0f8012fd66aef750ebe3f51dc6459e3a12940c7b8baced1da5d2c06b2f44d71f"
   }
 ]

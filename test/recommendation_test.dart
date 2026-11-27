@@ -4,6 +4,54 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:rebound/model.dart';
 
 void main() {
+  test(
+    'Destruction artifact toggle and legacy expansion preserve bindings',
+    () {
+      final p = Profile('Warlock · Destruction')..suggest();
+      expect(p.bindings[196586], isNotNull);
+      expect(p.bindings[196586], isNot(contains('-')));
+      final before = Map<int, String>.of(p.bindings)..remove(196586);
+      p.setArtifactAbilityEnabled(false);
+      expect(p.available.any((a) => a.id == 196586), isFalse);
+      expect(p.bindings, before);
+      expect(Profile.fromJson(p.toJson()).artifactAbilityEnabled, isFalse);
+      p.setArtifactAbilityEnabled(true);
+      for (final entry in before.entries) {
+        expect(p.bindings[entry.key], entry.value);
+      }
+      final legacy = jsonDecode(p.toJson()) as Map<String, dynamic>;
+      (legacy['abilities'] as List).removeWhere((a) => a['id'] == 196586);
+      (legacy['bindings'] as Map).remove('196586');
+      (legacy['enabled'] as List).remove(196586);
+      final loaded = Profile.fromJson(jsonEncode(legacy));
+      expect(loaded.bindings[196586], isNotNull);
+      for (final entry in before.entries) {
+        expect(loaded.bindings[entry.key], entry.value);
+      }
+      expect(loaded.errors, isEmpty);
+    },
+  );
+
+  test(
+    'Life Tap follows Destruction talents and respects manual inclusion',
+    () {
+      final p = Profile('Warlock · Destruction')..suggest();
+      expect(p.bindings[1454], isNotNull);
+      final before = Map<int, String>.of(p.bindings)..remove(1454);
+      p.selectTalent(1, 205148);
+      expect(p.bindings.containsKey(1454), isFalse);
+      expect(p.available.any((a) => a.id == 1454), isTrue);
+      expect(p.bindings, before);
+      p.selectTalent(1, 235157);
+      expect(p.bindings[1454], isNotNull);
+      expect(p.recommendationReason(1454), contains('Empowered Life Tap'));
+      p.assignSpell(1454, 'ALT-B');
+      p.selectTalent(1, 205148);
+      expect(p.bindings[1454], 'ALT-B');
+      final affliction = Profile('Warlock · Affliction')..suggest();
+      expect(affliction.recommendation(1454).priority, 22);
+    },
+  );
   test('Legacy localized roles refresh without changing saved bindings', () {
     final p = Profile('Warlock · Destruction')..sideButtons = true;
     p.suggest();
@@ -13,7 +61,10 @@ void main() {
     }
     final loaded = Profile.fromJson(jsonEncode(data));
     expect(loaded.bindings, p.bindings);
-    expect(loaded.abilities.firstWhere((a) => a.id == 104773).role, 'Defensive');
+    expect(
+      loaded.abilities.firstWhere((a) => a.id == 104773).role,
+      'Defensive',
+    );
     loaded.suggest();
     expect(loaded.bindings[104773], 'BUTTON5');
   });
