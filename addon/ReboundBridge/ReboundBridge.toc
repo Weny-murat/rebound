@@ -1,6 +1,7 @@
 ## Interface: 70300
 ## Title: Rebound Bridge
 ## Notes: Experimental Legion keybind import
-## Version: 0.3.0
-## SavedVariables: ReboundBackup
+## Version: 0.4.0
+## SavedVariables: ReboundBackup, ReboundSettings
+BindingLabels.lua
 ReboundBridge.lua

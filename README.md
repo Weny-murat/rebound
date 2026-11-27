@@ -98,6 +98,19 @@ the whole flow in the same panel. Preview also lists changes in game chat. Apply
 updates the current account/character binding set; Restore restores the last import.
 Account-wide binding changes also affect other characters using that binding set.
 
+**Show bindings on ElvUI bars** in `/rebound` enables cyan key labels at the top
+left of matching buttons. It is on by default and remembers your preference.
+Place the spell, Healthstone item, or exact bound macro on your bar as usual.
+Labels read the current direct bindings; they do not move buttons or replace
+ElvUI's own hotkey text. `S-E` means Shift+E, `C-R` Ctrl+R, `A-F` Alt+F,
+and `M4` mouse button 4. A mouseover Soulstone macro's key appears on that macro,
+not on the plain Soulstone spell. Paging and binding changes refresh the labels.
+The adapter targets the installed ElvUI 10.73 LibActionButton API; other bar addons
+are not supported. Without ElvUI it does nothing. Live client verification is
+still required. Update the entire addon folder, including `BindingLabels.lua`.
+Its Lua 5.1 mock tests run with `python tools/test_binding_labels.py` using the
+same dependencies as `tools/test_bridge.py`.
+
 V2 replaces all six movement actions, including secondary movement keys; unassigned
 movement actions are cleared. V1 spell-only exports remain readable. Action bar
 slots are not rearranged. The addon rejects combat-time imports, unlearned spells,
