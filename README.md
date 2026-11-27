@@ -40,7 +40,11 @@ directory**, including its DLLs and `data`, not the executable alone.
 
 - Destruction and Affliction Warlock; Frost and Blood Death Knight.
 - Seven talent rows per spec, active spell grants and replacement spells.
-- Destruction Dimensional Rift with an explicit artifact-unlocked toggle.
+- Dimensional Rift, Reap Souls, Sindragosa's Fury and Consumption, each gated by
+  the profile's artifact-unlocked toggle.
+- Use Healthstone as an item action, separate from Create Healthstone.
+- Raid and Dungeon / Mythic+ recommendation modes, pet-specific Command Demon
+  handling, and an independent Grimoire of Service pet selector.
 - Drag and drop, searchable key menus, and hover key capture with modifiers.
 - Configurable movement and strafe bindings, movement locking, excluded keys,
   and reset to default.
@@ -61,7 +65,11 @@ are not used by automatic suggestions, including their modifier combinations.
 Soulstone and Raise Ally receive combat resurrection priority. Preparation spells,
 Doomguard and Infernal remain available under **All / Optional** but are not
 automatically bound. Selecting Sacrifice suppresses pet-dependent recommendations.
-Service selects the active pet alternative. Manual inclusion overrides defaults.
+Service has its own pet choice, separate from the active permanent pet. Supremacy
+adds permanent Doomguard/Infernal options. Only Felhunter/Doomguard commands get
+interrupt priority; taunt, healing and knockback have separate treatment.
+Manual inclusion overrides defaults. Dungeon mode adds control recommendations;
+Raid keeps those situational spells optional. Mode changes preserve existing keys.
 
 Talent changes preserve remaining bindings and assign new spells to vacant keys.
 **Generate recommended layout** explicitly rebuilds spell placement. Movement
@@ -89,6 +97,12 @@ V2 replaces all six movement actions, including secondary movement keys; unassig
 movement actions are cleared. V1 spell-only exports remain readable. Action bar
 slots are not rearranged. The addon rejects combat-time imports, unlearned spells,
 duplicate keys and stale previews. Failed application attempts roll bindings back.
+
+V4 adds typed `ITEM:5512=KEY` Healthstone bindings and supports V3 macro rows.
+The addon validates the item ID and cached item name, warns when no Healthstone
+is in your bags, and uses an item binding rather than pretending it is a learned
+spell. If item data is not cached, create/inspect a Healthstone and preview again.
+Old V1–V3 exports remain supported. Install the updated addon for V4 imports.
 
 For mouseover combat resurrection, copy the text from the app and create the macro
 in game with the exact shown name (`ReboundSoulstone` / `ReboundRaiseAlly`). Enable
@@ -150,10 +164,14 @@ See [assets/ATTRIBUTION.md](assets/ATTRIBUTION.md) and the per-file source manif
 Spell icons belong to Blizzard Entertainment; the keyboard image has its own
 CC BY-SA 4.0 license. No blanket license over third-party assets is implied.
 
-The baseline spell catalog is incomplete. PvP talents, other artifact abilities, rotation
+The baseline spell catalog is incomplete. PvP talents, rotation
 simulation and importing existing game bindings are not implemented. Turkish
 special characters and unsupported keys are visible but cannot be exported.
 
 Current review checkpoints: [roadmap](docs/ROADMAP.md) and
 [Destruction spell audit](docs/destruction-review.md). These separate verified
 catalog changes from proposed priorities and outstanding real-client checks.
+
+Use `/reboundcheck` with the updated addon to copy a read-only client report for
+the remaining version-specific checks. It changes no bindings and casts nothing.
+See [client verification](docs/client-verification.md).

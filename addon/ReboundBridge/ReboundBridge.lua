@@ -65,7 +65,7 @@ button('1. Preview',24,function()
   local version
   for line in input:GetText():gmatch('[^\r\n]+') do
     if not header then
-      if line~='REBOUND:1:70305' and line~='REBOUND:2:70305' and line~='REBOUND:3:70305' then status:SetText('Invalid header.'); return end
+      if line~='REBOUND:1:70305' and line~='REBOUND:2:70305' and line~='REBOUND:3:70305' and line~='REBOUND:4:70305' then status:SetText('Invalid header.'); return end
       version=line
       header=true
     else
@@ -84,8 +84,19 @@ button('1. Preview',24,function()
         end
         report[#report+1]=action..' -> '..movementKey
       else
+        local itemId,itemKey=line:match('^ITEM:(%d+)=([A-Z0-9%-]+)$')
+        if itemId then
+          itemId=tonumber(itemId)
+          if version~='REBOUND:4:70305' or itemId~=5512 or not validKey(itemKey) or seen[itemKey] or spells['item:'..itemId] then status:SetText('Invalid or duplicate item/key.'); return end
+          local itemName=GetItemInfo(itemId)
+          if not itemName then status:SetText('Healthstone item data is not cached. Create or inspect a Healthstone, then preview again.'); return end
+          oldKeys[itemKey]=GetBindingAction(itemKey) or ''
+          rows[#rows+1]={key=itemKey,itemId=itemId,name=itemName}
+          report[#report+1]=itemKey..' -> ITEM '..itemName..' [previous: '..(oldKeys[itemKey]~='' and oldKeys[itemKey] or 'unbound')..']'..(GetItemCount(itemId)==0 and ' [WARNING: none in bags]' or '')
+          seen[itemKey],spells['item:'..itemId]=true,true
+        else
         local isMacro=line:sub(1,6)=='MACRO:'
-        if isMacro and version~='REBOUND:3:70305' then status:SetText('Macro import requires version 3.'); return end
+        if isMacro and version~='REBOUND:3:70305' and version~='REBOUND:4:70305' then status:SetText('Macro import requires version 3 or 4.'); return end
         local spellLine=isMacro and line:sub(7) or line
         local id,key=spellLine:match('^(%d+)=([A-Z0-9%-]+)$'); id=tonumber(id)
         if not id or not validKey(key) or seen[key] or spells[id] then status:SetText('Invalid or duplicate spell/key.'); return end
@@ -98,6 +109,7 @@ button('1. Preview',24,function()
         rows[#rows+1]={key=key,name=name,id=id,macro=macro}
         report[#report+1]=key..' -> '..(macro and ('MACRO '..macro) or name)..(old~='' and (' [replaces '..old..']') or '')
         seen[key],spells[id]=true,true
+        end
       end
     end
   end
@@ -114,6 +126,7 @@ apply=button('2. Apply changes',224,function()
   if pending.set~=GetCurrentBindingSet() or pending.owner~=owner() then status:SetText('Binding set changed. Preview again.'); return end
   for _,row in ipairs(pending.rows) do
     if row.id and not IsPlayerSpell(row.id) then status:SetText('Spells changed. Preview again.'); return end
+    if row.itemId and GetItemInfo(row.itemId)~=row.name then status:SetText('Item data changed. Preview again.'); return end
     if row.macro and checkedMacro(row.id,row.name)~=row.macro then status:SetText('Macro changed. Preview again.'); return end
   end
   for key,old in pairs(pending.keys) do
@@ -138,6 +151,7 @@ apply=button('2. Apply changes',224,function()
   for _,row in ipairs(pending.rows) do
     local ok
     if row.command then ok=SetBinding(row.key,row.command)
+    elseif row.itemId then ok=SetBindingItem(row.key,row.name)
     elseif row.macro then ok=SetBindingMacro(row.key,row.macro)
     else ok=SetBindingSpell(row.key,row.name) end
     if not ok then
@@ -158,3 +172,25 @@ button('Restore last import',424,function()
 end)
 SLASH_REBOUNDBRIDGE1='/rebound'
 SlashCmdList.REBOUNDBRIDGE=function() if f:IsShown() then f:Hide() else f:Show() end end
+
+-- Read-only evidence collection; never changes bindings or casts abilities.
+SLASH_REBOUNDCHECK1='/reboundcheck'
+SlashCmdList.REBOUNDCHECK=function()
+  local version,build=GetBuildInfo()
+  local report={'REBOUND CLIENT CHECK','Client: '..tostring(version)..' build '..tostring(build)}
+  local spec=GetSpecialization and GetSpecialization()
+  if spec and GetSpecializationInfo then report[#report+1]='Spec: '..tostring(GetSpecializationInfo(spec)) end
+  if UnitCreatureFamily then report[#report+1]='Pet family: '..tostring(UnitCreatureFamily('pet')) end
+  for _,id in ipairs({196586,216698,190778,205223,234153,198590,17877,17962,48018,48020,108503,119898,119910,119905,119907,119909,171140,171152,20707,61999}) do
+    local name=GetSpellInfo(id)
+    local override=FindSpellOverrideByID and FindSpellOverrideByID(id)
+    report[#report+1]=id..' '..tostring(name)..' learned='..tostring(IsPlayerSpell(id))..' override='..tostring(override)
+    if GetSpellDescription and (id==17877 or id==108503 or id==48018) then
+      report[#report+1]=GetSpellDescription(id) or '(no description)'
+    end
+  end
+  report[#report+1]='Healthstones in bags: '..tostring(GetItemCount(5512))
+  report[#report+1]='Read-only report. Import this text nowhere; copy it for review.'
+  pending=nil; apply:Disable(); input:SetText(table.concat(report,'\n')); f:Show(); input:SetFocus(); input:HighlightText()
+  status:SetText('Client report selected. Ctrl+C to copy. No bindings were changed. Test casts manually using the checklist.')
+end

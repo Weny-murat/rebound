@@ -75,7 +75,8 @@ void main() {
     p.selectTalent(5, 108503);
     p.suggest();
     expect(p.bindings[29722], 'E');
-    expect(p.bindings[20707], 'SHIFT-E');
+    expect(p.bindings[-5512], 'SHIFT-E');
+    expect(p.bindings[20707], 'SHIFT-Q');
     expect(p.bindings.containsValue('SHIFT-1'), isFalse);
     expect(p.errors, isEmpty);
   });
@@ -168,7 +169,7 @@ void main() {
       )) {
         expect(
           p.bindings[a.id],
-          startsWith('SHIFT-'),
+          anyOf(startsWith('SHIFT-'), startsWith('ALT-')),
           reason: '$spec ${a.name}',
         );
       }
@@ -333,6 +334,8 @@ void main() {
       expect(p.bindings.containsKey(id), isFalse);
     }
     p.setActivePet('imp');
+    expect(p.bindings[111897], isNotNull);
+    p.setServicePet('imp');
     expect(p.bindings[111859], isNotNull);
     expect(p.bindings.containsKey(111897), isFalse);
     p.selectTalent(5, 152107);

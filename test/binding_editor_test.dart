@@ -67,12 +67,12 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
-  Future<Profile> setup(WidgetTester tester) async {
+  Future<Profile> setup(WidgetTester tester, {Profile? profile}) async {
     tester.view.physicalSize = const Size(1600, 1600);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
-    final p = Profile(catalogs.keys.first)..suggest();
+    final p = profile ?? (Profile(catalogs.keys.first)..suggest());
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
@@ -92,6 +92,24 @@ void main() {
     expect(find.byKey(const ValueKey('layer-CTRL-')), findsNothing);
     return p;
   }
+
+  testWidgets(
+    'Service selector changes its summon without changing the active pet',
+    (tester) async {
+      final p = Profile('Warlock · Destruction')..selectTalent(5, 108501);
+      final originalKey = p.bindings[29722];
+      await setup(tester, profile: p);
+      await tester.tap(find.byKey(const ValueKey('service-pet-felhunter')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Imp').last);
+      await tester.pumpAndSettle();
+      expect(p.servicePet, 'imp');
+      expect(p.activePet, 'felhunter');
+      expect(p.bindings[111859], isNotNull);
+      expect(p.bindings[29722], originalKey);
+      expect(tester.takeException(), isNull);
+    },
+  );
 
   testWidgets(
     'Lock and suggest preserves movement and disables key menu mutations',

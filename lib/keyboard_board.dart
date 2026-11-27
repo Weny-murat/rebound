@@ -11,7 +11,7 @@ class SpellIcon extends StatelessWidget {
   Widget build(BuildContext context) => ClipRRect(
     borderRadius: BorderRadius.circular(5),
     child: Image.asset(
-      'assets/spells/${ability.id}.png',
+      'assets/spells/${ability.iconId}.png',
       width: size,
       height: size,
       fit: BoxFit.cover,

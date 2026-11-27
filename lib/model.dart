@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'talent_data.dart';
 import 'recommendation_rules.dart';
-export 'recommendation_rules.dart' show petNames;
+export 'recommendation_rules.dart' show petNames, serviceSpells;
 
 class Talent {
   Talent(Map<String, dynamic> data)
@@ -50,8 +50,14 @@ const defaultMovement = {
 };
 
 class Ability {
-  const Ability(this.id, this.name, this.role);
+  const Ability(this.id, this.name, this.role) : isItem = false;
+  const Ability.item(int itemId, this.name, this.role)
+    : id = -itemId,
+      isItem = true;
   final int id;
+  final bool isItem;
+  int get gameId => isItem ? -id : id;
+  int get iconId => isItem && gameId == 5512 ? 6201 : gameId;
   final String name;
   final String role;
 }
@@ -59,6 +65,7 @@ class Ability {
 // Curated castable abilities: TauriShoot class/spec data. Triggered effects and
 // passive ranks in the source are deliberately excluded.
 const warlockCommon = [
+  Ability.item(5512, 'Use Healthstone', 'Healing'),
   Ability(1454, 'Life Tap', 'Resource'),
   Ability(234153, 'Drain Life', 'Healing'),
   Ability(5782, 'Fear', 'Control'),
@@ -81,6 +88,7 @@ const warlockCommon = [
   Ability(1122, 'Summon Infernal', 'Pet'),
 ];
 const deathKnightCommon = [
+  Ability.item(5512, 'Use Healthstone', 'Healing'),
   Ability(50977, 'Death Gate', 'Utility'),
   Ability(56222, 'Dark Command', 'Control'),
   Ability(3714, 'Path of Frost', 'Utility'),
@@ -103,6 +111,7 @@ const catalogs = <String, List<Ability>>{
     ...warlockCommon,
   ],
   'Warlock · Affliction': [
+    Ability(216698, 'Reap Souls', 'Artifact'),
     Ability(980, 'Agony', 'Frequent use'),
     Ability(172, 'Corruption', 'Frequent use'),
     Ability(30108, 'Unstable Affliction', 'Frequent use'),
@@ -112,6 +121,7 @@ const catalogs = <String, List<Ability>>{
     ...warlockCommon,
   ],
   'Death Knight · Frost': [
+    Ability(190778, "Sindragosa's Fury", 'Artifact'),
     Ability(47568, 'Empower Rune Weapon', 'Utility'),
     Ability(49020, 'Obliterate', 'Frequent use'),
     Ability(49143, 'Frost Strike', 'Frequent use'),
@@ -125,6 +135,7 @@ const catalogs = <String, List<Ability>>{
     ...deathKnightCommon,
   ],
   'Death Knight · Blood': [
+    Ability(205223, 'Consumption', 'Artifact'),
     Ability(206930, 'Heart Strike', 'Frequent use'),
     Ability(195182, 'Marrowrend', 'Frequent use'),
     Ability(49998, 'Death Strike', 'Frequent use'),
@@ -149,6 +160,13 @@ const keyboardRows = [
   ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'Ö', 'Ç', '.'],
 ];
 const keyboardLayouts = {'tr': 'Turkish Q', 'en': 'English Q'};
+const pveModes = {'raid': 'Raid', 'dungeon': 'Dungeon / Mythic+'};
+const artifactAbilities = {
+  'Warlock · Destruction': 196586,
+  'Warlock · Affliction': 216698,
+  'Death Knight · Frost': 190778,
+  'Death Knight · Blood': 205223,
+};
 const combatRezMacros = {20707: 'ReboundSoulstone', 61999: 'ReboundRaiseAlly'};
 String combatRezMacroText(int id) =>
     '#showtooltip ${id == 20707 ? 'Soulstone' : 'Raise Ally'}\n/cast [@mouseover,help,dead][help,dead] ${id == 20707 ? 'Soulstone' : 'Raise Ally'}';
@@ -223,10 +241,38 @@ class Profile {
   List<List<String>> get displayedKeyboardRows =>
       keyboardLayout == 'en' ? englishKeyboardRows : keyboardRows;
   String activePet = 'felhunter';
+  String servicePet = 'felhunter';
+  String pveMode = 'raid';
+  Map<String, String> get availablePets => {
+    for (final entry in petNames.entries)
+      if (!['doomguard', 'infernal'].contains(entry.key) ||
+          selectedTalents.containsValue(152107))
+        entry.key: entry.value,
+  };
+  void setServicePet(String pet) {
+    if (!serviceSpells.containsKey(pet)) {
+      throw ArgumentError('Invalid Service pet.');
+    }
+    servicePet = pet;
+    suggest(preserveBindings: true);
+  }
+
+  void setPveMode(String mode) {
+    if (!pveModes.containsKey(mode)) throw ArgumentError('Invalid PvE mode.');
+    pveMode = mode;
+    suggest(preserveBindings: true);
+  }
+
   final Map<int, bool> recommendationOverrides = {};
   bool recommendationMigrated = false;
-  Recommendation recommendation(int id) =>
-      recommendAbility(id, spec, selectedTalents.values.toSet(), activePet);
+  Recommendation recommendation(int id) => recommendAbility(
+    id,
+    spec,
+    selectedTalents.values.toSet(),
+    activePet,
+    servicePet: servicePet,
+    pveMode: pveMode,
+  );
   String recommendationReason(int id) =>
       '${recommendationOverrides[id] == true
           ? 'Manually included · '
@@ -244,7 +290,9 @@ class Profile {
   }
 
   void setActivePet(String pet) {
-    if (!petNames.containsKey(pet)) throw ArgumentError('Invalid pet.');
+    if (!availablePets.containsKey(pet)) {
+      throw ArgumentError('Invalid pet for current talents.');
+    }
     activePet = pet;
     suggest(preserveBindings: true);
   }
@@ -290,7 +338,7 @@ class Profile {
       .where((t) => selectedTalents.containsValue(t.id));
   Set<int> get hiddenAbilities => {
     ...chosenTalents.expand((t) => t.replaces),
-    if (!artifactAbilityEnabled) 196586,
+    if (!artifactAbilityEnabled) artifactAbilities[spec]!,
   };
   List<Ability> get available {
     final granted = chosenTalents.expand((t) => t.grants).toList();
@@ -314,6 +362,7 @@ class Profile {
       }
       selectedTalents[row] = id;
     }
+    if (!availablePets.containsKey(activePet)) activePet = 'felhunter';
     final after = available.map((a) => a.id).toSet();
     for (final removed in before.difference(after)) {
       enabled.remove(removed);
@@ -428,7 +477,9 @@ class Profile {
     for (final a in ordered) {
       if (bindings.containsKey(a.id)) continue;
       final rank = recommendation(a.id).priority ?? 90;
-      final mouse = a.id == 47528 || a.id == 119898
+      final petInterrupt =
+          a.id == 119898 && ['felhunter', 'doomguard'].contains(activePet);
+      final mouse = a.id == 47528 || petInterrupt
           ? 'BUTTON4'
           : a.role == 'Defensive'
           ? 'BUTTON5'
@@ -442,7 +493,7 @@ class Profile {
       }
       final isRotation = rank <= 22;
       final isOptional = !recommendation(a.id).automatic;
-      final preferredShift = a.id == 47528 || a.id == 119898
+      final preferredShift = a.id == 47528 || petInterrupt
           ? 'SHIFT-R'
           : a.role == 'Defensive' ||
                 [108416, 194679, 219809, 206977].contains(a.id)
@@ -533,13 +584,21 @@ class Profile {
       throw StateError('Resolve layout errors first.');
     }
     return [
-      mouseoverCombatRez ? 'REBOUND:3:70305' : 'REBOUND:2:70305',
+      active.any((a) => a.isItem)
+          ? 'REBOUND:4:70305'
+          : mouseoverCombatRez
+          ? 'REBOUND:3:70305'
+          : 'REBOUND:2:70305',
       ...movementLabels.keys.map(
         (action) => 'MOVE:$action=${movement[action] ?? 'NONE'}',
       ),
       ...active.map(
         (a) =>
-            '${mouseoverCombatRez && combatRezMacros.containsKey(a.id) ? 'MACRO:' : ''}${a.id}=${bindings[a.id]}',
+            '${a.isItem
+                ? 'ITEM:'
+                : mouseoverCombatRez && combatRezMacros.containsKey(a.id)
+                ? 'MACRO:'
+                : ''}${a.gameId}=${bindings[a.id]}',
       ),
     ].join('\n');
   }
@@ -548,6 +607,8 @@ class Profile {
     'spec': spec,
     'recommendationVersion': 3,
     'activePet': activePet,
+    'servicePet': servicePet,
+    'pveMode': pveMode,
     'recommendationOverrides': recommendationOverrides.map(
       (id, value) => MapEntry('$id', value),
     ),
@@ -561,7 +622,14 @@ class Profile {
     'excludedKeys': excludedKeys.toList(),
     'talents': selectedTalents.map((row, id) => MapEntry('$row', id)),
     'abilities': abilities
-        .map((a) => {'id': a.id, 'name': a.name, 'role': a.role})
+        .map(
+          (a) => {
+            'id': a.id,
+            'name': a.name,
+            'role': a.role,
+            'kind': a.isItem ? 'item' : 'spell',
+          },
+        )
         .toList(),
     'enabled': enabled.toList(),
     'bindings': bindings.map((k, v) => MapEntry('$k', v)),
@@ -581,6 +649,12 @@ class Profile {
     if (petNames.containsKey(data['activePet'])) {
       p.activePet = data['activePet'] as String;
     }
+    if (serviceSpells.containsKey(data['servicePet'] ?? data['activePet'])) {
+      p.servicePet = (data['servicePet'] ?? data['activePet']) as String;
+    }
+    if (pveModes.containsKey(data['pveMode'])) {
+      p.pveMode = data['pveMode'] as String;
+    }
     if (data['recommendationOverrides'] is Map) {
       (data['recommendationOverrides'] as Map).forEach((id, value) {
         p.recommendationOverrides[int.parse(id as String)] = value as bool;
@@ -594,6 +668,9 @@ class Profile {
       final current = catalogs[p.spec]!
           .where((spell) => spell.id == a['id'])
           .firstOrNull;
+      if (current == null && ((a['id'] as int) <= 0 || a['kind'] == 'item')) {
+        throw const FormatException('Unknown item action or invalid spell ID.');
+      }
       p.abilities.add(
         current ??
             Ability(a['id'] as int, a['name'] as String, 'Talent / custom'),
@@ -628,6 +705,7 @@ class Profile {
         }
       });
     }
+    if (!p.availablePets.containsKey(p.activePet)) p.activePet = 'felhunter';
     if (data['recommendationVersion'] != 3) {
       p.suggest();
       p.recommendationMigrated = true;

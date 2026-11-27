@@ -25,6 +25,8 @@ const petNames = {
   'imp': 'Imp',
   'voidwalker': 'Voidwalker',
   'succubus': 'Succubus',
+  'doomguard': 'Doomguard',
+  'infernal': 'Infernal',
   'none': 'No pet',
 };
 const serviceSpells = {
@@ -45,8 +47,32 @@ Recommendation recommendAbility(
   int id,
   String spec,
   Set<int> talents,
-  String pet,
-) {
+  String pet, {
+  String servicePet = 'felhunter',
+  String pveMode = 'raid',
+}) {
+  if (id == -5512) {
+    return const Recommendation(
+      28,
+      'Emergency healing item: uses a Healthstone from your bags, not Create Healthstone.',
+    );
+  }
+  if (id == 216698 || id == 190778 || id == 205223) {
+    return Recommendation(
+      id == 216698
+          ? 19
+          : id == 205223
+          ? 30
+          : 40,
+      'Artifact combat ability; disable if your character has not unlocked it.',
+    );
+  }
+  if (pveMode == 'dungeon' && [30283, 5782, 710, 45524].contains(id)) {
+    return Recommendation(
+      id == 30283 ? 30 : 34,
+      'Dungeon / Mythic+ control: nearby Shift access. Use only when appropriate for the pull.',
+    );
+  }
   if (spec == 'Warlock · Destruction') {
     if (id == 196586) {
       return const Recommendation(
@@ -104,16 +130,51 @@ Recommendation recommendAbility(
         'Health Funnel: situational pet healing; include manually if needed.',
       );
     }
-    return Recommendation(
-      26,
-      '${petNames[pet]} pet command; in-combat utility.',
-    );
+    return switch (pet) {
+      'felhunter' => const Recommendation(
+        25,
+        'Felhunter: Spell Lock interrupt; quick access.',
+      ),
+      'doomguard' =>
+        talents.contains(152107)
+            ? const Recommendation(
+                25,
+                'Supremacy Doomguard: Shadow Lock interrupt; quick access.',
+              )
+            : const Recommendation(
+                null,
+                'Permanent Doomguard requires Supremacy.',
+              ),
+      'infernal' =>
+        talents.contains(152107)
+            ? const Recommendation(
+                30,
+                'Supremacy Infernal: Meteor Strike area stun, not an interrupt lockout.',
+              )
+            : const Recommendation(
+                null,
+                'Permanent Infernal requires Supremacy.',
+              ),
+      'imp' => const Recommendation(
+        31,
+        'Imp: Cauterize Master healing, not an interrupt.',
+      ),
+      'voidwalker' => const Recommendation(
+        null,
+        'Voidwalker: Suffering pet taunt; optional in group PvE.',
+      ),
+      'succubus' => Recommendation(
+        pveMode == 'dungeon' ? 34 : null,
+        'Succubus: Whiplash knockback; situational control, not an interrupt.',
+      ),
+      _ => const Recommendation(null, 'No supported active pet command.'),
+    };
   }
   if (serviceSpells.containsValue(id)) {
-    if (serviceSpells[pet] == id) {
+    if (serviceSpells[servicePet] == id) {
       return const Recommendation(
         39,
-        'Grimoire of Service combat cooldown for the selected pet.',
+        'Grimoire of Service combat cooldown for the independently selected Service pet.',
       );
     }
     return const Recommendation(

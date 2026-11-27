@@ -94,3 +94,34 @@ assert(bindings['SHIFT-E']==nil)
 input:SetText(rezPayload:gsub('MACRO:20707','MACRO:29722')); click('1. Preview'); assert(buttons['2. Apply changes'].disabled)
 ''')
 print('Combat rez macro checks passed: missing macro, apply, restore, stale macro, rollback, whitelist.')
+lua.execute('''
+function GetItemInfo(id) if not missingItem and id==5512 then return 'Healthstone' end end
+function GetItemCount() return stones or 0 end
+function SetBindingItem(key,name) if failItem then return false end; bindings[key]='ITEM '..name; return true end
+itemPayload=payload:gsub('REBOUND:2','REBOUND:4')..'\\nITEM:5512=SHIFT-F'
+input:SetText(itemPayload); click('1. Preview'); click('2. Apply changes')
+assert(bindings['SHIFT-F']=='ITEM Healthstone'); assert(bindings.S=='SPELL Incinerate')
+click('Restore last import'); assert(bindings['SHIFT-F']==nil)
+-- No cached item data, unknown items and duplicate item keys are rejected.
+missingItem=true; input:SetText(itemPayload); click('1. Preview'); assert(buttons['2. Apply changes'].disabled); missingItem=false
+input:SetText(itemPayload:gsub('ITEM:5512','ITEM:123')); click('1. Preview'); assert(buttons['2. Apply changes'].disabled)
+input:SetText(itemPayload..'\\nITEM:5512=SHIFT-R'); click('1. Preview'); assert(buttons['2. Apply changes'].disabled)
+input:SetText(itemPayload:gsub('ITEM:5512=SHIFT%-F','ITEM:5512=S')); click('1. Preview'); assert(buttons['2. Apply changes'].disabled)
+input:SetText(itemPayload:gsub('REBOUND:4','REBOUND:2')); click('1. Preview'); assert(buttons['2. Apply changes'].disabled)
+-- Item failure rolls back spells and movement too.
+local previousS=bindings.S; local previousW=bindings.W
+input:SetText(itemPayload); click('1. Preview'); failItem=true; click('2. Apply changes'); failItem=false
+assert(bindings['SHIFT-F']==nil); assert(bindings.S==previousS); assert(bindings.W==previousW)
+-- Cached data changes invalidate an already previewed import.
+input:SetText(itemPayload); click('1. Preview'); missingItem=true; click('2. Apply changes'); missingItem=false
+assert(bindings['SHIFT-F']==nil)
+-- Macro and item rows coexist in V4.
+input:SetText(rezPayload:gsub('REBOUND:3','REBOUND:4')..'\\nITEM:5512=SHIFT-F')
+click('1. Preview'); click('2. Apply changes'); assert(bindings['SHIFT-E']=='MACRO ReboundSoulstone'); assert(bindings['SHIFT-F']=='ITEM Healthstone')
+click('Restore last import')
+local savedCount=saves; local oldS=bindings.S
+SlashCmdList.REBOUNDCHECK()
+assert(input:GetText():find('REBOUND CLIENT CHECK',1,true)); assert(bindings.S==oldS); assert(saves==savedCount)
+assert(buttons['2. Apply changes'].disabled)
+''')
+print('Item and diagnostic checks passed: V4, cache checks, duplicates, mixed macro/item, rollback, read-only report.')

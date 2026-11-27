@@ -6,6 +6,9 @@ its initial implementation exists.
 1. **Spell and talent correctness — in progress.** Destruction first:
    [catalog review](destruction-review.md), missing actions, pet/talent conditions,
    then user approval of priorities. Follow with Affliction, Frost and Blood.
+   Implementation checkpoint 2 covers Healthstone, pets, mode-aware control and
+   all four artifact abilities: [review](combat-actions-review.md). Actual client
+   evidence is still pending via `/reboundcheck` and the manual checklist.
 2. **Personal ergonomics — planned.** Per-key reach ratings, modifier preferences,
    individual spell binding locks; review suggestions against the actual movement layout.
 3. **Profile safety — planned.** Unsaved-change warnings, last opened file,

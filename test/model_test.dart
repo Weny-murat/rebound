@@ -136,7 +136,7 @@ void main() {
         final p = Profile(s)..sideButtons = mouse;
         p.suggest();
         expect(p.errors, isEmpty);
-        expect(p.export(), startsWith('REBOUND:2:70305\n'));
+        expect(p.export(), startsWith('REBOUND:4:70305\n'));
       }
     }
   });

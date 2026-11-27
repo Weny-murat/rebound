@@ -365,7 +365,7 @@ class _BindingEditorState extends State<BindingEditor> {
       child: LayoutBuilder(
         builder: (context, constraints) {
           final list = panel(
-            '02 / Spells',
+            '02 / Spells and items',
             Column(
               children: [
                 const Text(
@@ -390,7 +390,7 @@ class _BindingEditorState extends State<BindingEditor> {
                         labelText: 'Active combat pet',
                         isDense: true,
                       ),
-                      items: petNames.entries
+                      items: p.availablePets.entries
                           .map(
                             (e) => DropdownMenuItem(
                               value: e.key,
@@ -406,6 +406,33 @@ class _BindingEditorState extends State<BindingEditor> {
                                 widget.onChanged();
                               }
                             },
+                    ),
+                  ),
+                if (p.spec.startsWith('Warlock') &&
+                    p.selectedTalents.containsValue(108501))
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: DropdownButtonFormField<String>(
+                      key: ValueKey('service-pet-${p.servicePet}'),
+                      initialValue: p.servicePet,
+                      isExpanded: true,
+                      decoration: const InputDecoration(
+                        labelText: 'Grimoire of Service pet (separate)',
+                      ),
+                      items: serviceSpells.keys
+                          .map(
+                            (pet) => DropdownMenuItem(
+                              value: pet,
+                              child: Text(petNames[pet]!),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (pet) {
+                        if (pet != null) {
+                          setState(() => p.setServicePet(pet));
+                          widget.onChanged();
+                        }
+                      },
                     ),
                   ),
                 ExpansionTile(

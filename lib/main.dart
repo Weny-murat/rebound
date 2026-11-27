@@ -370,6 +370,7 @@ class _WorkshopState extends State<Workshop> {
                               ..mouseoverCombatRez = profile.mouseoverCombatRez
                               ..artifactAbilityEnabled =
                                   profile.artifactAbilityEnabled
+                              ..pveMode = profile.pveMode
                               ..keyboardLayout = profile.keyboardLayout
                               ..keyboardAppearance = profile.keyboardAppearance
                               ..sideButtons = profile.sideButtons
@@ -390,14 +391,39 @@ class _WorkshopState extends State<Workshop> {
                     label: const Text('Two-side-button mouse'),
                     onSelected: (v) => setState(() => profile.sideButtons = v),
                   ),
-                  if (profile.spec == 'Warlock · Destruction')
-                    FilterChip(
-                      selected: profile.artifactAbilityEnabled,
-                      label: const Text('Artifact unlocked: Dimensional Rift'),
-                      onSelected: (value) => setState(
-                        () => profile.setArtifactAbilityEnabled(value),
+                  SizedBox(
+                    width: 240,
+                    child: DropdownButtonFormField<String>(
+                      key: ValueKey('pve-mode-${profile.pveMode}'),
+                      initialValue: profile.pveMode,
+                      isExpanded: true,
+                      decoration: const InputDecoration(
+                        labelText: 'PvE recommendations',
                       ),
+                      items: pveModes.entries
+                          .map(
+                            (e) => DropdownMenuItem(
+                              value: e.key,
+                              child: Text(e.value),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (mode) {
+                        if (mode != null) {
+                          setState(() => profile.setPveMode(mode));
+                        }
+                      },
                     ),
+                  ),
+                  FilterChip(
+                    selected: profile.artifactAbilityEnabled,
+                    label: Text(
+                      'Artifact unlocked: ${profile.abilities.firstWhere((a) => a.id == artifactAbilities[profile.spec]).name}',
+                    ),
+                    onSelected: (value) => setState(
+                      () => profile.setArtifactAbilityEnabled(value),
+                    ),
+                  ),
                   SizedBox(
                     width: 220,
                     child: DropdownButtonFormField<String>(

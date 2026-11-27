@@ -964,5 +964,26 @@
     "source": "https://legion-shoot.tauri.hu/?spell=196586",
     "image": "https://legion-static.tauri.hu/images/icons/large/spell_warlock_demonicportal_purple.png",
     "sha256": "0f8012fd66aef750ebe3f51dc6459e3a12940c7b8baced1da5d2c06b2f44d71f"
+  },
+  {
+    "spellId": 216698,
+    "icon": "inv_staff_2h_artifactdeadwind_d_01",
+    "source": "https://legion-shoot.tauri.hu/?spell=216698",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_staff_2h_artifactdeadwind_d_01.png",
+    "sha256": "80cc261da6735a84e745ae7388beabfc0dafbb72ffd7b66616078b8e09b755f3"
+  },
+  {
+    "spellId": 190778,
+    "icon": "achievement_boss_sindragosa",
+    "source": "https://legion-shoot.tauri.hu/?spell=190778",
+    "image": "https://legion-static.tauri.hu/images/icons/large/achievement_boss_sindragosa.png",
+    "sha256": "1091b700f5e7a4f5c8344b9b750c78c8b164529c9d8a6c52fcff73199f02bdce"
+  },
+  {
+    "spellId": 205223,
+    "icon": "inv_axe_2h_artifactmaw_d_01",
+    "source": "https://legion-shoot.tauri.hu/?spell=205223",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_axe_2h_artifactmaw_d_01.png",
+    "sha256": "0ecb439f765ef91dfd1df1b453c94a5712d15b81ccd38779a928e97e57e01792"
   }
 ]
