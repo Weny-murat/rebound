@@ -1,0 +1,961 @@
+[
+  {
+    "spellId": 104773,
+    "icon": "spell_shadow_demonictactics",
+    "source": "https://legion-shoot.tauri.hu/?spell=104773",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_demonictactics.png",
+    "sha256": "7856451A669ED3EDCBC597392E562DDFFF1DA0DC957458A70F506EF4C4ECA6B1"
+  },
+  {
+    "spellId": 108199,
+    "icon": "ability_deathknight_aoedeathgrip",
+    "source": "https://legion-shoot.tauri.hu/?spell=108199",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_deathknight_aoedeathgrip.png",
+    "sha256": "EC1CD821BE790917BCFE3C8ADA98777E2756D53F334D299BE84BB34FF5530EAF"
+  },
+  {
+    "spellId": 1098,
+    "icon": "spell_shadow_enslavedemon",
+    "source": "https://legion-shoot.tauri.hu/?spell=1098",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_enslavedemon.png",
+    "sha256": "15B73552DEC4F1E3677A1488A777036CD7AA4112BEED032ACE34758860F2EC3F"
+  },
+  {
+    "spellId": 111673,
+    "icon": "inv_misc_bone_skull_01",
+    "source": "https://legion-shoot.tauri.hu/?spell=111673",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_misc_bone_skull_01.png",
+    "sha256": "9CFC5614B689C42B30D3633390DE2568DE0FB93C8B69B21A9146A37AFC9E25E4"
+  },
+  {
+    "spellId": 111771,
+    "icon": "spell_warlock_demonicportal_green",
+    "source": "https://legion-shoot.tauri.hu/?spell=111771",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_warlock_demonicportal_green.png",
+    "sha256": "09A3FA70FF99DF9282E711DFD395F025659691E28AB5CF2ABAFCF0B56CCA232A"
+  },
+  {
+    "spellId": 1122,
+    "icon": "spell_shadow_summoninfernal",
+    "source": "https://legion-shoot.tauri.hu/?spell=1122",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_summoninfernal.png",
+    "sha256": "8A5D6161A392C19BD15B13F12EC38FBEA349C35BA2FA5A9D20A2CE893716D0A1"
+  },
+  {
+    "spellId": 116858,
+    "icon": "ability_warlock_chaosbolt",
+    "source": "https://legion-shoot.tauri.hu/?spell=116858",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_chaosbolt.png",
+    "sha256": "4894D194EEAE8691720D1C321FAC479B61C1EB59162239AC16816D701B36C5CA"
+  },
+  {
+    "spellId": 119898,
+    "icon": "ability_warlock_demonicempowerment",
+    "source": "https://legion-shoot.tauri.hu/?spell=119898",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_demonicempowerment.png",
+    "sha256": "71D42D2BC8347A39BD72E2B6031CC2B966B6C53FBFB7E2B55DC3BB5E9560234B"
+  },
+  {
+    "spellId": 126,
+    "icon": "spell_shadow_evileye",
+    "source": "https://legion-shoot.tauri.hu/?spell=126",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_evileye.png",
+    "sha256": "CB980893166F4795E1C4B66015473F0C246FEDB06CACCE72B4DBDDEE64AD3B13"
+  },
+  {
+    "spellId": 1454,
+    "icon": "spell_shadow_burningspirit",
+    "source": "https://legion-shoot.tauri.hu/?spell=1454",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_burningspirit.png",
+    "sha256": "B18A26C13BD329AA9B10E63B65EAD9A901E749E54E5040FA20F555D9643767AB"
+  },
+  {
+    "spellId": 172,
+    "icon": "spell_shadow_abominationexplosion",
+    "source": "https://legion-shoot.tauri.hu/?spell=172",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_abominationexplosion.png",
+    "sha256": "0E41F2B267A0AAC88875A16645BFFADDEFF9CF8B2B9609CF87EDCD9DD27FF671"
+  },
+  {
+    "spellId": 17962,
+    "icon": "spell_fire_fireball",
+    "source": "https://legion-shoot.tauri.hu/?spell=17962",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_fire_fireball.png",
+    "sha256": "1AE608FE79468A24F2DC93C3968A38B6A9572DD412D8CC05E73482265DFED0C2"
+  },
+  {
+    "spellId": 18540,
+    "icon": "warlock_summon_doomguard",
+    "source": "https://legion-shoot.tauri.hu/?spell=18540",
+    "image": "https://legion-static.tauri.hu/images/icons/large/warlock_summon_doomguard.png",
+    "sha256": "F5736D4664376810B1F1EE2980C0FCC85372EB1EC3E95000E474B38F77CBFB24"
+  },
+  {
+    "spellId": 195182,
+    "icon": "ability_deathknight_marrowrend",
+    "source": "https://legion-shoot.tauri.hu/?spell=195182",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_deathknight_marrowrend.png",
+    "sha256": "34E01DF256B1BA018841E441C815C7E034A100CD71A81A5FC7C9C3F84C17880E"
+  },
+  {
+    "spellId": 195292,
+    "icon": "ability_deathknight_deathscaress",
+    "source": "https://legion-shoot.tauri.hu/?spell=195292",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_deathknight_deathscaress.png",
+    "sha256": "047F40B700D987D43637CA8124B096A6D330993B70541477A529F425425D4867"
+  },
+  {
+    "spellId": 196770,
+    "icon": "ability_deathknight_remorselesswinters2",
+    "source": "https://legion-shoot.tauri.hu/?spell=196770",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_deathknight_remorselesswinters2.png",
+    "sha256": "13F305095132F0ED97F85ACFAEBBA4A1E459DFB3EA50A0FD2493D926F2912D71"
+  },
+  {
+    "spellId": 198590,
+    "icon": "spell_shadow_haunting",
+    "source": "https://legion-shoot.tauri.hu/?spell=198590",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_haunting.png",
+    "sha256": "053528609E71652F834CB67D6351ECC0CBEAED9ADF91648116444842BE304BDE"
+  },
+  {
+    "spellId": 206930,
+    "icon": "inv_weapon_shortblade_40",
+    "source": "https://legion-shoot.tauri.hu/?spell=206930",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_weapon_shortblade_40.png",
+    "sha256": "AFA816138BB6045FA5B2B65AE1F74BD32C37BCD3F6BFAE40BD0EB668B26A7F25"
+  },
+  {
+    "spellId": 20707,
+    "icon": "spell_shadow_soulgem",
+    "source": "https://legion-shoot.tauri.hu/?spell=20707",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_soulgem.png",
+    "sha256": "338274437293DD9C73793EAEA4B03584A9D18DBD2B0A420C0017C2668F198017"
+  },
+  {
+    "spellId": 212552,
+    "icon": "inv_helm_plate_raiddeathknight_p_01",
+    "source": "https://legion-shoot.tauri.hu/?spell=212552",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_helm_plate_raiddeathknight_p_01.png",
+    "sha256": "EF62D93C670C794C2F61325D8C50AE5018EF4099FECD2222C7A485F9792EC832"
+  },
+  {
+    "spellId": 221562,
+    "icon": "ability_deathknight_asphixiate",
+    "source": "https://legion-shoot.tauri.hu/?spell=221562",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_deathknight_asphixiate.png",
+    "sha256": "AAD0C63D11645A8969CB58992D87C062192A3D5F9A0BFE80E9246D2306B955A0"
+  },
+  {
+    "spellId": 234153,
+    "icon": "spell_shadow_lifedrain02",
+    "source": "https://legion-shoot.tauri.hu/?spell=234153",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_lifedrain02.png",
+    "sha256": "84F314444F8DD28BF86771D4B678503986DCAE090BBBC6DA9AFA7399A9C39345"
+  },
+  {
+    "spellId": 27243,
+    "icon": "spell_shadow_seedofdestruction",
+    "source": "https://legion-shoot.tauri.hu/?spell=27243",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_seedofdestruction.png",
+    "sha256": "C56DD3BA1E24B3D4E7EA976D37E3E3DA41FBF928C93E10D6B6E50AB27072078E"
+  },
+  {
+    "spellId": 29722,
+    "icon": "spell_fire_burnout",
+    "source": "https://legion-shoot.tauri.hu/?spell=29722",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_fire_burnout.png",
+    "sha256": "EC8B63FD64E2AFCF39839BD928A7D0DA734B4543458FD6177EE31420D0BB0D74"
+  },
+  {
+    "spellId": 29893,
+    "icon": "spell_shadow_shadesofdarkness",
+    "source": "https://legion-shoot.tauri.hu/?spell=29893",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_shadesofdarkness.png",
+    "sha256": "268FB57D4AE27B1AA7E73E6248C149BF0D59B39DB3B8875F2E8F69D43B2C7194"
+  },
+  {
+    "spellId": 30108,
+    "icon": "spell_shadow_unstableaffliction_3",
+    "source": "https://legion-shoot.tauri.hu/?spell=30108",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_unstableaffliction_3.png",
+    "sha256": "92A2136A5DF6040E0F8DD1B24DD0784604FB53C92CB2667415179F56914E610D"
+  },
+  {
+    "spellId": 348,
+    "icon": "spell_fire_immolation",
+    "source": "https://legion-shoot.tauri.hu/?spell=348",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_fire_immolation.png",
+    "sha256": "8F3B34DFB9052C2041BD9065D4CD60CFB496332CB29F0EA5C825569FFFF68419"
+  },
+  {
+    "spellId": 3714,
+    "icon": "spell_deathknight_pathoffrost",
+    "source": "https://legion-shoot.tauri.hu/?spell=3714",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_pathoffrost.png",
+    "sha256": "685914300EC1F553D60351B29E4B2E498E1F134807D04097A937E1A04E447619"
+  },
+  {
+    "spellId": 43265,
+    "icon": "spell_shadow_deathanddecay",
+    "source": "https://legion-shoot.tauri.hu/?spell=43265",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_deathanddecay.png",
+    "sha256": "2D7FEA06502B0D6811920AA25521DEBC14C0C3F15931EDECC40D9161531CAA91"
+  },
+  {
+    "spellId": 45524,
+    "icon": "spell_frost_chainsofice",
+    "source": "https://legion-shoot.tauri.hu/?spell=45524",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_frost_chainsofice.png",
+    "sha256": "27FB9E828B7D8205681001F3442562655D6C22DB168CB0224DACCACBD3E9D771"
+  },
+  {
+    "spellId": 47528,
+    "icon": "spell_deathknight_mindfreeze",
+    "source": "https://legion-shoot.tauri.hu/?spell=47528",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_mindfreeze.png",
+    "sha256": "113981CE0E5C3FC853D788234E9B00FAF5DD80B8D592D867A205B47725CB1D52"
+  },
+  {
+    "spellId": 47568,
+    "icon": "inv_sword_62",
+    "source": "https://legion-shoot.tauri.hu/?spell=47568",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_sword_62.png",
+    "sha256": "1700ADDFC3A48393CBCC3CF033C06E6969D3C136EA80C1F1303EA80020B8462B"
+  },
+  {
+    "spellId": 48707,
+    "icon": "spell_shadow_antimagicshell",
+    "source": "https://legion-shoot.tauri.hu/?spell=48707",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_antimagicshell.png",
+    "sha256": "6D20D28156C4FFE11783188C6952A4242B552789F94C9F0B58CE48583F130407"
+  },
+  {
+    "spellId": 48792,
+    "icon": "spell_deathknight_iceboundfortitude",
+    "source": "https://legion-shoot.tauri.hu/?spell=48792",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_iceboundfortitude.png",
+    "sha256": "0246D21001F807B46E387D2B94F195450A557CCBAB93D1EA3A097B37AFA90C91"
+  },
+  {
+    "spellId": 49020,
+    "icon": "spell_deathknight_classicon",
+    "source": "https://legion-shoot.tauri.hu/?spell=49020",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_classicon.png",
+    "sha256": "34E8F8E24133A5E78B588B18D5440D19890EF58040645246373DE14DDD893743"
+  },
+  {
+    "spellId": 49028,
+    "icon": "inv_sword_07",
+    "source": "https://legion-shoot.tauri.hu/?spell=49028",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_sword_07.png",
+    "sha256": "1E15AA63EC4CE95CEC71D60F81B3528737CC777B1C374746957A0658A0DBD562"
+  },
+  {
+    "spellId": 49143,
+    "icon": "spell_deathknight_empowerruneblade2",
+    "source": "https://legion-shoot.tauri.hu/?spell=49143",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_empowerruneblade2.png",
+    "sha256": "8A77B67A2786AB1B12DAA362C7DC9F6E51815E08A19039AD0107B65ED38CBFC0"
+  },
+  {
+    "spellId": 49184,
+    "icon": "spell_frost_arcticwinds",
+    "source": "https://legion-shoot.tauri.hu/?spell=49184",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_frost_arcticwinds.png",
+    "sha256": "FF2EFD209B0F03292AA31031F835B05491755C582DBAF85C10BB80C60C7BFE44"
+  },
+  {
+    "spellId": 49576,
+    "icon": "spell_deathknight_strangulate",
+    "source": "https://legion-shoot.tauri.hu/?spell=49576",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_strangulate.png",
+    "sha256": "D5B78FA9C4D516EE609C28AD00F5F2F297E82525E9D296594E4BCE0FFAE6C1F5"
+  },
+  {
+    "spellId": 49998,
+    "icon": "spell_deathknight_butcher2",
+    "source": "https://legion-shoot.tauri.hu/?spell=49998",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_butcher2.png",
+    "sha256": "826620D03CFE77E1D12BD4C822824F07CBA7BC411B296DFCB85AE7ED08320E6B"
+  },
+  {
+    "spellId": 50842,
+    "icon": "spell_deathknight_bloodboil",
+    "source": "https://legion-shoot.tauri.hu/?spell=50842",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_bloodboil.png",
+    "sha256": "6C67E7A8456E243FB480F0D5A7E1DCDEA1F1687153F022675C07D3EC30FEE40A"
+  },
+  {
+    "spellId": 50977,
+    "icon": "spell_arcane_teleportundercity",
+    "source": "https://legion-shoot.tauri.hu/?spell=50977",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_arcane_teleportundercity.png",
+    "sha256": "D0108C5DDF89F90F4F1026CAC86D6907533D463C82C58AB2FF5DE7185DB61AE0"
+  },
+  {
+    "spellId": 51271,
+    "icon": "ability_deathknight_pillaroffrost",
+    "source": "https://legion-shoot.tauri.hu/?spell=51271",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_deathknight_pillaroffrost.png",
+    "sha256": "426EDEFE3A8CC07021DF33E8DB92A81B601942610D2C363479EAE5A752170166"
+  },
+  {
+    "spellId": 55233,
+    "icon": "spell_shadow_lifedrain",
+    "source": "https://legion-shoot.tauri.hu/?spell=55233",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_lifedrain.png",
+    "sha256": "DFA5CDEDA063CCA87F49F28480AEA2FE14BEE72864289B6DB06779EE7BCB0DC6"
+  },
+  {
+    "spellId": 56222,
+    "icon": "spell_nature_shamanrage",
+    "source": "https://legion-shoot.tauri.hu/?spell=56222",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_nature_shamanrage.png",
+    "sha256": "69A68E7ABA2B4527C29C5B0F6DA2C7C248340F356B591084D364C1527BD15D22"
+  },
+  {
+    "spellId": 5697,
+    "icon": "spell_shadow_demonbreath",
+    "source": "https://legion-shoot.tauri.hu/?spell=5697",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_demonbreath.png",
+    "sha256": "D677B659646C28E7692FEC545AF068903113B5F05ED9739FFF3560B86FB20CD0"
+  },
+  {
+    "spellId": 5740,
+    "icon": "spell_shadow_rainoffire",
+    "source": "https://legion-shoot.tauri.hu/?spell=5740",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_rainoffire.png",
+    "sha256": "104A8E3BF42DA1A5552E9EA3A3F059398EB2D2D4E4535E85AD4FEE0DFDF4714B"
+  },
+  {
+    "spellId": 5782,
+    "icon": "spell_shadow_possession",
+    "source": "https://legion-shoot.tauri.hu/?spell=5782",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_possession.png",
+    "sha256": "78A438A9E92030C7DF0BDBAE45785BEE0C63F82A4854B75BC9B7B76D85FFC448"
+  },
+  {
+    "spellId": 61999,
+    "icon": "spell_shadow_deadofnight",
+    "source": "https://legion-shoot.tauri.hu/?spell=61999",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_deadofnight.png",
+    "sha256": "2B9292F90E39D45186134398BAF32E257A4A983CD30EBCD6973B882FE1F31055"
+  },
+  {
+    "spellId": 6201,
+    "icon": "warlock_-healthstone",
+    "source": "https://legion-shoot.tauri.hu/?spell=6201",
+    "image": "https://legion-static.tauri.hu/images/icons/large/warlock_-healthstone.png",
+    "sha256": "904E20F26CBEE7F83C247D0425D64CC85BDA950FFB2D710F29F3A8F780CC37E5"
+  },
+  {
+    "spellId": 688,
+    "icon": "spell_shadow_summonimp",
+    "source": "https://legion-shoot.tauri.hu/?spell=688",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_summonimp.png",
+    "sha256": "E6458112F06DFB9C9C74590A3AA8360B4801A6790CDCB518CF23FD36EA887402"
+  },
+  {
+    "spellId": 691,
+    "icon": "spell_shadow_summonfelhunter",
+    "source": "https://legion-shoot.tauri.hu/?spell=691",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_summonfelhunter.png",
+    "sha256": "1F1225DB1BCAFCD02D6BD60197A25FAE891354B5C5D0E24D7EFC38A1A2EFC2C2"
+  },
+  {
+    "spellId": 697,
+    "icon": "spell_shadow_summonvoidwalker",
+    "source": "https://legion-shoot.tauri.hu/?spell=697",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_summonvoidwalker.png",
+    "sha256": "6B94F748B37168D8E4D57A3D727F6026E18506EE2290CF9DE0E70763F926F081"
+  },
+  {
+    "spellId": 698,
+    "icon": "spell_shadow_twilight",
+    "source": "https://legion-shoot.tauri.hu/?spell=698",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_twilight.png",
+    "sha256": "58D29192E34106CAF4C80D681BB523C104F7A0EB414FF75C73ACAE6DC430BA94"
+  },
+  {
+    "spellId": 710,
+    "icon": "spell_shadow_cripple",
+    "source": "https://legion-shoot.tauri.hu/?spell=710",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_cripple.png",
+    "sha256": "898BCBE1AC5C6F2B28C9B5E6BBA0D47C1C15D60F03215BF788AC1B794C59E18A"
+  },
+  {
+    "spellId": 712,
+    "icon": "spell_shadow_summonsuccubus",
+    "source": "https://legion-shoot.tauri.hu/?spell=712",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_summonsuccubus.png",
+    "sha256": "C098088E320985B342A8FFD387749187092947A3E60ECAEB4F90858543A4FF77"
+  },
+  {
+    "spellId": 755,
+    "icon": "spell_shadow_lifedrain",
+    "source": "https://legion-shoot.tauri.hu/?spell=755",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_lifedrain.png",
+    "sha256": "DFA5CDEDA063CCA87F49F28480AEA2FE14BEE72864289B6DB06779EE7BCB0DC6"
+  },
+  {
+    "spellId": 80240,
+    "icon": "ability_warlock_baneofhavoc",
+    "source": "https://legion-shoot.tauri.hu/?spell=80240",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_baneofhavoc.png",
+    "sha256": "11A89AC08F8208F3FC8E8DBDABFB53BD6506D5CA3E8398A2D6D7F91E2D0B7202"
+  },
+  {
+    "spellId": 980,
+    "icon": "spell_shadow_curseofsargeras",
+    "source": "https://legion-shoot.tauri.hu/?spell=980",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_curseofsargeras.png",
+    "sha256": "512074D451617CB7F6EA3FF1E948A74CD02D180293FF745731D550E7AF9B537B"
+  },
+  {
+    "spellId": 5484,
+    "icon": "ability_warlock_howlofterror",
+    "source": "https://legion-shoot.tauri.hu/?spell=5484",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_howlofterror.png",
+    "sha256": "a894fe09931d8685eb42b90e40776e39422029489c94e6d1793fb1bf7b07ec3b"
+  },
+  {
+    "spellId": 6789,
+    "icon": "ability_warlock_mortalcoil",
+    "source": "https://legion-shoot.tauri.hu/?spell=6789",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_mortalcoil.png",
+    "sha256": "4741fe1d84d18801ce832df113e3c17f656a9188b60e753bb0164a58e5cb6a66"
+  },
+  {
+    "spellId": 17877,
+    "icon": "spell_shadow_scourgebuild",
+    "source": "https://legion-shoot.tauri.hu/?spell=17877",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_scourgebuild.png",
+    "sha256": "871ce4e3db3be7ae3751e5d98cdd02cc891052e9db7e307c66fe0839d2e0977b"
+  },
+  {
+    "spellId": 30283,
+    "icon": "ability_warlock_shadowfurytga",
+    "source": "https://legion-shoot.tauri.hu/?spell=30283",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_shadowfurytga.png",
+    "sha256": "cc31d25bf63c855a566b3e68ef222a7897f8323c8c40fc0b715fef907e8c0980"
+  },
+  {
+    "spellId": 48018,
+    "icon": "spell_shadow_demoniccirclesummon",
+    "source": "https://legion-shoot.tauri.hu/?spell=48018",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_demoniccirclesummon.png",
+    "sha256": "65b93390a01ee34b985f6151a998f0fe828d03d1c86c649a3cb8d4dd39052b97"
+  },
+  {
+    "spellId": 48020,
+    "icon": "spell_shadow_demoniccircleteleport",
+    "source": "https://legion-shoot.tauri.hu/?spell=48020",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_demoniccircleteleport.png",
+    "sha256": "72ad84d91046c4a2605013e148b907bd6a7c7327e6ce6adf0870598592266df5"
+  },
+  {
+    "spellId": 48181,
+    "icon": "ability_warlock_haunt",
+    "source": "https://legion-shoot.tauri.hu/?spell=48181",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_haunt.png",
+    "sha256": "51221b221dec35ff2d64f4f180b9286424a107445fe96695949bbc3a88834675"
+  },
+  {
+    "spellId": 57330,
+    "icon": "inv_misc_horn_02",
+    "source": "https://legion-shoot.tauri.hu/?spell=57330",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_misc_horn_02.png",
+    "sha256": "ab3a6d62dc528bb03005cabd411c00123c2e148bfe2c22b76cca819c62c811d3"
+  },
+  {
+    "spellId": 63106,
+    "icon": "spell_shadow_requiem",
+    "source": "https://legion-shoot.tauri.hu/?spell=63106",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_requiem.png",
+    "sha256": "02296c49dceb6555cf89938427ad7b0d31b9e8a64086c36a1d639fdd62900a79"
+  },
+  {
+    "spellId": 108416,
+    "icon": "warlock_sacrificial_pact",
+    "source": "https://legion-shoot.tauri.hu/?spell=108416",
+    "image": "https://legion-static.tauri.hu/images/icons/large/warlock_sacrificial_pact.png",
+    "sha256": "4b4cb6a980a50cddef5d19abd170a22917b0fcb7a48f5c7723cd6d346789dd32"
+  },
+  {
+    "spellId": 108501,
+    "icon": "warlock_grimoireofservice",
+    "source": "https://legion-shoot.tauri.hu/?spell=108501",
+    "image": "https://legion-static.tauri.hu/images/icons/large/warlock_grimoireofservice.png",
+    "sha256": "93b5b50594eb9bdfc9bf805880de231e46beb91e4d3ec769245b8da75228c5a3"
+  },
+  {
+    "spellId": 108503,
+    "icon": "warlock_grimoireofsacrifice",
+    "source": "https://legion-shoot.tauri.hu/?spell=108503",
+    "image": "https://legion-static.tauri.hu/images/icons/large/warlock_grimoireofsacrifice.png",
+    "sha256": "c59710b467f79bfb81ab437ba1ee4549c8dc7489887f75ed03092426ada57951"
+  },
+  {
+    "spellId": 111400,
+    "icon": "ability_deathwing_sealarmorbreachtga",
+    "source": "https://legion-shoot.tauri.hu/?spell=111400",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_deathwing_sealarmorbreachtga.png",
+    "sha256": "5bf4c67504818ad43eeab0407f5c43d8aff7646d4ffb45a397465fdc357af89d"
+  },
+  {
+    "spellId": 111859,
+    "icon": "spell_shadow_summonimp",
+    "source": "https://legion-shoot.tauri.hu/?spell=111859",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_summonimp.png",
+    "sha256": "e6458112f06dfb9c9c74590a3aa8360b4801a6790cdcb518cf23fd36ea887402"
+  },
+  {
+    "spellId": 111895,
+    "icon": "spell_shadow_summonvoidwalker",
+    "source": "https://legion-shoot.tauri.hu/?spell=111895",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_summonvoidwalker.png",
+    "sha256": "6b94f748b37168d8e4d57a3d727f6026e18506ee2290cf9de0e70763f926f081"
+  },
+  {
+    "spellId": 111896,
+    "icon": "spell_shadow_summonsuccubus",
+    "source": "https://legion-shoot.tauri.hu/?spell=111896",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_summonsuccubus.png",
+    "sha256": "c098088e320985b342a8ffd387749187092947a3e60ecaeb4f90858543a4ff77"
+  },
+  {
+    "spellId": 111897,
+    "icon": "spell_shadow_summonfelhunter",
+    "source": "https://legion-shoot.tauri.hu/?spell=111897",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_summonfelhunter.png",
+    "sha256": "1f1225db1bcafcd02d6bd60197a25fae891354b5c5d0e24d7efc38a1a2efc2c2"
+  },
+  {
+    "spellId": 114556,
+    "icon": "inv_misc_shadowegg",
+    "source": "https://legion-shoot.tauri.hu/?spell=114556",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_misc_shadowegg.png",
+    "sha256": "f8cc12b304ef92f62e1ec36c650a183f4c56f706dc2656e28b0ec198c9631c09"
+  },
+  {
+    "spellId": 152107,
+    "icon": "warlock_grimoireofcommand",
+    "source": "https://legion-shoot.tauri.hu/?spell=152107",
+    "image": "https://legion-static.tauri.hu/images/icons/large/warlock_grimoireofcommand.png",
+    "sha256": "8551e3c8ff84e01512f0f287cfc746e2d44293db9c0138fc24fec9d5aad8f5a7"
+  },
+  {
+    "spellId": 152108,
+    "icon": "achievement_zone_cataclysm",
+    "source": "https://legion-shoot.tauri.hu/?spell=152108",
+    "image": "https://legion-static.tauri.hu/images/icons/large/achievement_zone_cataclysm.png",
+    "sha256": "5dd56df1700969fca5626f0d557e2e33325a297552b059edab0887b2fc24ed60"
+  },
+  {
+    "spellId": 152279,
+    "icon": "spell_deathknight_breathofsindragosa",
+    "source": "https://legion-shoot.tauri.hu/?spell=152279",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_breathofsindragosa.png",
+    "sha256": "b811891cedbdc2917e6cc78119e7874e13458b0cbb978029e89bd5de1bf8fb4d"
+  },
+  {
+    "spellId": 194662,
+    "icon": "ability_deathknight_deathsiphon2",
+    "source": "https://legion-shoot.tauri.hu/?spell=194662",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_deathknight_deathsiphon2.png",
+    "sha256": "741bf1587d23ca6f0ef284ec1a18e76361d94a89c455cb08312e62f12a5c6096"
+  },
+  {
+    "spellId": 194679,
+    "icon": "spell_deathknight_runetap",
+    "source": "https://legion-shoot.tauri.hu/?spell=194679",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_runetap.png",
+    "sha256": "3d3c1d99a69ababf2f1439730b73e5115a6ac11f3850bc2f138bd996564ea78f"
+  },
+  {
+    "spellId": 194844,
+    "icon": "achievement_boss_lordmarrowgar",
+    "source": "https://legion-shoot.tauri.hu/?spell=194844",
+    "image": "https://legion-static.tauri.hu/images/icons/large/achievement_boss_lordmarrowgar.png",
+    "sha256": "786130132c386fa7e753a24efe36dd31571e4c69bd6f7495cf7bd050ea37f062"
+  },
+  {
+    "spellId": 194878,
+    "icon": "spell_deathknight_icytalons",
+    "source": "https://legion-shoot.tauri.hu/?spell=194878",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_icytalons.png",
+    "sha256": "2f380d2a35bf9e982223ee6ae294a8442369b16b3c9fd159d947d0c4a6611e31"
+  },
+  {
+    "spellId": 194909,
+    "icon": "inv_misc_permafrostshard",
+    "source": "https://legion-shoot.tauri.hu/?spell=194909",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_misc_permafrostshard.png",
+    "sha256": "57ef7c80139d80f89edc0ee814c0dd66dffab1eb72e705aa06befa3f9ddcd170"
+  },
+  {
+    "spellId": 194912,
+    "icon": "spell_frost_ice-shards",
+    "source": "https://legion-shoot.tauri.hu/?spell=194912",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_frost_ice-shards.png",
+    "sha256": "bcc6e507b61a7f630052d960bafe4abf03134c1dba51ab327bb9605502589457"
+  },
+  {
+    "spellId": 194913,
+    "icon": "ability_hunter_glacialtrap",
+    "source": "https://legion-shoot.tauri.hu/?spell=194913",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_hunter_glacialtrap.png",
+    "sha256": "4dc2029d202177b6d5b4c3633375002178ec686747f606d623eb50b36dc8526e"
+  },
+  {
+    "spellId": 195679,
+    "icon": "spell_shadow_soulleech",
+    "source": "https://legion-shoot.tauri.hu/?spell=195679",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_soulleech.png",
+    "sha256": "9905702b61a9fc1d102844719f9fd39c6c6ab002f4202b1157052f8d81b1b8cc"
+  },
+  {
+    "spellId": 196098,
+    "icon": "spell_warlock_demonsoul",
+    "source": "https://legion-shoot.tauri.hu/?spell=196098",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_warlock_demonsoul.png",
+    "sha256": "d4ef4c99e77788131a4c4263ca95fd2f0069dff8d34f5fd8c76ae771f7b1eb3d"
+  },
+  {
+    "spellId": 196102,
+    "icon": "spell_shadow_curseofsargeras",
+    "source": "https://legion-shoot.tauri.hu/?spell=196102",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_curseofsargeras.png",
+    "sha256": "512074d451617cb7f6ea3ff1e948a74cd02d180293ff745731d550e7af9b537b"
+  },
+  {
+    "spellId": 196103,
+    "icon": "ability_bossmannoroth_empoweredmannorothsgaze",
+    "source": "https://legion-shoot.tauri.hu/?spell=196103",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_bossmannoroth_empoweredmannorothsgaze.png",
+    "sha256": "cb983288645a7cbaea41440b16a2b46ffdf174f935463febb98df44190a9a310"
+  },
+  {
+    "spellId": 196105,
+    "icon": "ability_creature_disease_03",
+    "source": "https://legion-shoot.tauri.hu/?spell=196105",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_creature_disease_03.png",
+    "sha256": "35a9a28698bc5bf3f9a1999da4c7a98b79299c929a11583e4339089c065e6741"
+  },
+  {
+    "spellId": 196226,
+    "icon": "spell_shadow_seedofdestruction",
+    "source": "https://legion-shoot.tauri.hu/?spell=196226",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_seedofdestruction.png",
+    "sha256": "c56dd3ba1e24b3d4e7ea976d37e3e3da41fbf928c93e10d6b6e50ab27072078e"
+  },
+  {
+    "spellId": 196406,
+    "icon": "ability_warlock_backdraft",
+    "source": "https://legion-shoot.tauri.hu/?spell=196406",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_backdraft.png",
+    "sha256": "d248c83d275f992344e2956a54872b30de4d88d30b8e25221c7e2c64b6989cfe"
+  },
+  {
+    "spellId": 196408,
+    "icon": "ability_warlock_fireandbrimstone",
+    "source": "https://legion-shoot.tauri.hu/?spell=196408",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_fireandbrimstone.png",
+    "sha256": "d293c21fdd091958e8284655b5a6498de13b521fdccc9ae374811422ba5eccda"
+  },
+  {
+    "spellId": 196410,
+    "icon": "ability_warlock_baneofhavoc",
+    "source": "https://legion-shoot.tauri.hu/?spell=196410",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_baneofhavoc.png",
+    "sha256": "11a89ac08f8208f3fc8e8dbdabfb53bd6506d5ca3e8398a2d6d7f91e2d0b7202"
+  },
+  {
+    "spellId": 196412,
+    "icon": "ability_warlock_eradication",
+    "source": "https://legion-shoot.tauri.hu/?spell=196412",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_eradication.png",
+    "sha256": "1136c7c058c306adcf38f83c6fed6c8a3cb90fc6faed4cab47694b838a7fe692"
+  },
+  {
+    "spellId": 196447,
+    "icon": "spell_fire_ragnaros_lavaboltgreen",
+    "source": "https://legion-shoot.tauri.hu/?spell=196447",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_fire_ragnaros_lavaboltgreen.png",
+    "sha256": "d7fddf888472074e799d14a90d7b0d7757c5911ce102a101bc8a4feb054df288"
+  },
+  {
+    "spellId": 205148,
+    "icon": "ability_warlock_backdraftgreen",
+    "source": "https://legion-shoot.tauri.hu/?spell=205148",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_backdraftgreen.png",
+    "sha256": "8ae333ecbc6809264a348150396757023a843f8739998a0721fb5e4d55a9ef97"
+  },
+  {
+    "spellId": 205179,
+    "icon": "inv_enchant_voidsphere",
+    "source": "https://legion-shoot.tauri.hu/?spell=205179",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_enchant_voidsphere.png",
+    "sha256": "ac7257fe0960ca77b882e564dc44706916e2289d5032a1efd59176d7dcd2184f"
+  },
+  {
+    "spellId": 205184,
+    "icon": "ability_warlock_inferno",
+    "source": "https://legion-shoot.tauri.hu/?spell=205184",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_inferno.png",
+    "sha256": "8c6ad38866fcfd57c5dd7bb6e6e8941cbf949b9d220907ab2b82bda4f5fd4857"
+  },
+  {
+    "spellId": 205723,
+    "icon": "spell_deathknight_bloodpresence",
+    "source": "https://legion-shoot.tauri.hu/?spell=205723",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_bloodpresence.png",
+    "sha256": "e405bbb70874bee210536c0c3d3fcfb4a0cfd3db29403ff1285620e066d226ae"
+  },
+  {
+    "spellId": 205727,
+    "icon": "spell_shadow_antimagicshell",
+    "source": "https://legion-shoot.tauri.hu/?spell=205727",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_antimagicshell.png",
+    "sha256": "6d20d28156c4ffe11783188c6952a4242b552789f94c9f0b58ce48583f130407"
+  },
+  {
+    "spellId": 206931,
+    "icon": "ability_animusdraw",
+    "source": "https://legion-shoot.tauri.hu/?spell=206931",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_animusdraw.png",
+    "sha256": "7bd6cf7c2d8d275a66b657fd4df6fe23bb3d9bf2a1a110c30563d5aad5b7414d"
+  },
+  {
+    "spellId": 206940,
+    "icon": "ability_hunter_rapidkilling",
+    "source": "https://legion-shoot.tauri.hu/?spell=206940",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_hunter_rapidkilling.png",
+    "sha256": "4f2d74561b6ec4dc2dfdaae87e6d06cec03e7c7eeb44c33eacfeb4d94235b896"
+  },
+  {
+    "spellId": 206960,
+    "icon": "spell_shadow_auraofdarkness",
+    "source": "https://legion-shoot.tauri.hu/?spell=206960",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_auraofdarkness.png",
+    "sha256": "2d2df513631797c1a9d387d20152b6984acd2f7ad6afa32debea54c801163b84"
+  },
+  {
+    "spellId": 206967,
+    "icon": "achievement_boss_kelthuzad_01",
+    "source": "https://legion-shoot.tauri.hu/?spell=206967",
+    "image": "https://legion-static.tauri.hu/images/icons/large/achievement_boss_kelthuzad_01.png",
+    "sha256": "ff6911abdad54878bb0dd7617c3a50978058468796c8e5339db13a86b66209dc"
+  },
+  {
+    "spellId": 206970,
+    "icon": "spell_shadow_chilltouch",
+    "source": "https://legion-shoot.tauri.hu/?spell=206970",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_chilltouch.png",
+    "sha256": "45e3640a897dcc3a215484ea8b2238cfd78e573d08c613124beb362d13708efc"
+  },
+  {
+    "spellId": 206974,
+    "icon": "inv_armor_shield_naxxramas_d_02",
+    "source": "https://legion-shoot.tauri.hu/?spell=206974",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_armor_shield_naxxramas_d_02.png",
+    "sha256": "a82e713d5c0f27e3c7a06c2987a483dfb812dba5fbcc1fc68d197e45e8eddfb6"
+  },
+  {
+    "spellId": 206977,
+    "icon": "inv_misc_gem_bloodstone_01",
+    "source": "https://legion-shoot.tauri.hu/?spell=206977",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_misc_gem_bloodstone_01.png",
+    "sha256": "b42644de227a2064715b07689f3f2fd2ab8a95dcc98412d177825374edc6983b"
+  },
+  {
+    "spellId": 207057,
+    "icon": "ability_warrior_shatteringthrow",
+    "source": "https://legion-shoot.tauri.hu/?spell=207057",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warrior_shatteringthrow.png",
+    "sha256": "3f799b16e1dc80301455b085cccc3c0f8d11b4b25a606ffabc024ad5ea19b234"
+  },
+  {
+    "spellId": 207060,
+    "icon": "spell_frost_arcticwinds",
+    "source": "https://legion-shoot.tauri.hu/?spell=207060",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_frost_arcticwinds.png",
+    "sha256": "ff2efd209b0f03292aa31031f835b05491755c582dbaf85c10bb80c60c7bfe44"
+  },
+  {
+    "spellId": 207061,
+    "icon": "spell_frost_frostarmor",
+    "source": "https://legion-shoot.tauri.hu/?spell=207061",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_frost_frostarmor.png",
+    "sha256": "386f6548d03ab9e000795ded83b343cff982b1dfeec7397103653e0c76eaf2e2"
+  },
+  {
+    "spellId": 207104,
+    "icon": "boss_odunrunes_blue",
+    "source": "https://legion-shoot.tauri.hu/?spell=207104",
+    "image": "https://legion-static.tauri.hu/images/icons/large/boss_odunrunes_blue.png",
+    "sha256": "57293d7a753de61f53238ed22ff771e1627eb74011f058885d76d817cc634c18"
+  },
+  {
+    "spellId": 207126,
+    "icon": "inv_misc_herb_icecap",
+    "source": "https://legion-shoot.tauri.hu/?spell=207126",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_misc_herb_icecap.png",
+    "sha256": "28765294b8e7f708ec9dc5369d13ad3839abd8e5026f0082de402daebb1a8acc"
+  },
+  {
+    "spellId": 207127,
+    "icon": "ability_deathknight_hungeringruneblade",
+    "source": "https://legion-shoot.tauri.hu/?spell=207127",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_deathknight_hungeringruneblade.png",
+    "sha256": "c59d1bf135cbc6a59cf60a748e4147fc07c176a1f86ada4360f8733dfec19c70"
+  },
+  {
+    "spellId": 207142,
+    "icon": "spell_frost_icestorm",
+    "source": "https://legion-shoot.tauri.hu/?spell=207142",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_frost_icestorm.png",
+    "sha256": "cab602d89ccef58d03644d852c3e954518361268c5dce3674dd5526036d8dd06"
+  },
+  {
+    "spellId": 207161,
+    "icon": "spell_deathknight_icetouch",
+    "source": "https://legion-shoot.tauri.hu/?spell=207161",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_icetouch.png",
+    "sha256": "3ae072ff19c90cc98a92ea78352c5f543e5a3e90c3d3ccedc21766092bdf7b52"
+  },
+  {
+    "spellId": 207167,
+    "icon": "spell_frost_chillingblast",
+    "source": "https://legion-shoot.tauri.hu/?spell=207167",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_frost_chillingblast.png",
+    "sha256": "d0127dc074efb5c146d51f14df238fba59d2c983071c2762e7f4d653a8af9202"
+  },
+  {
+    "spellId": 207170,
+    "icon": "inv_wolfdraenormountfrost",
+    "source": "https://legion-shoot.tauri.hu/?spell=207170",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_wolfdraenormountfrost.png",
+    "sha256": "e7d2f79bf489473e6019252aff716857d6660e08d4978a567e24d323286e871c"
+  },
+  {
+    "spellId": 207188,
+    "icon": "ability_mage_shattershield",
+    "source": "https://legion-shoot.tauri.hu/?spell=207188",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_mage_shattershield.png",
+    "sha256": "92517fde534c6e9b0379640e4feada31b165c42b4a95f081aee696c0c03679cd"
+  },
+  {
+    "spellId": 207200,
+    "icon": "achievement_zone_frostfire",
+    "source": "https://legion-shoot.tauri.hu/?spell=207200",
+    "image": "https://legion-static.tauri.hu/images/icons/large/achievement_zone_frostfire.png",
+    "sha256": "d51a68c120d3b15bb42bd27181ffcd7820d9b569824bc74cb8eed7eda23a55f4"
+  },
+  {
+    "spellId": 207230,
+    "icon": "inv_misc_2h_farmscythe_a_01",
+    "source": "https://legion-shoot.tauri.hu/?spell=207230",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_misc_2h_farmscythe_a_01.png",
+    "sha256": "23e8036be2510224d18c3917f485728643fc73b564f4b38dad5a88441f893cdc"
+  },
+  {
+    "spellId": 207256,
+    "icon": "inv_axe_114",
+    "source": "https://legion-shoot.tauri.hu/?spell=207256",
+    "image": "https://legion-static.tauri.hu/images/icons/large/inv_axe_114.png",
+    "sha256": "2d0b107c065ff43458d91636d5210568ec155cbb34561c5f814cf2198ace0679"
+  },
+  {
+    "spellId": 211078,
+    "icon": "spell_deathknight_spelldeflection",
+    "source": "https://legion-shoot.tauri.hu/?spell=211078",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_spelldeflection.png",
+    "sha256": "9289141f0b21094f783a96ca10359d6cec7ef5f777448b72c49060f98327e431"
+  },
+  {
+    "spellId": 215941,
+    "icon": "spell_shadow_soulleech_2",
+    "source": "https://legion-shoot.tauri.hu/?spell=215941",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_soulleech_2.png",
+    "sha256": "4bcc7cd41c5aadbf72908a910bc82eaf83d6d27ca12e4d84f9956fbeb2696fd3"
+  },
+  {
+    "spellId": 219272,
+    "icon": "spell_shadow_felarmour",
+    "source": "https://legion-shoot.tauri.hu/?spell=219272",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_felarmour.png",
+    "sha256": "5e22ac3362963ff0519fb47d5287ab83c317fa4911ab49d5e191b91011b4dd92"
+  },
+  {
+    "spellId": 219779,
+    "icon": "spell_shadow_demonicempathy",
+    "source": "https://legion-shoot.tauri.hu/?spell=219779",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_demonicempathy.png",
+    "sha256": "f230dded71a2d9ffc2104ac5984f98d8d69ab2dad63357d02322776a3d864f33"
+  },
+  {
+    "spellId": 219786,
+    "icon": "ability_deathknight_brittlebones",
+    "source": "https://legion-shoot.tauri.hu/?spell=219786",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_deathknight_brittlebones.png",
+    "sha256": "8ae8c9567a6ef00a68e3056ae6904bdbaaed597871309ae7786047ee11e8c126"
+  },
+  {
+    "spellId": 219809,
+    "icon": "ability_fiegndead",
+    "source": "https://legion-shoot.tauri.hu/?spell=219809",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_fiegndead.png",
+    "sha256": "833e6a01d1ba1ee40fd0e28261843bd60bed4f47530913acb9a52b5b8ea7cd15"
+  },
+  {
+    "spellId": 221536,
+    "icon": "spell_deathknight_deathstrike",
+    "source": "https://legion-shoot.tauri.hu/?spell=221536",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_deathstrike.png",
+    "sha256": "a740af98b600af4943c0e870c279ac2c7345c29861f314b7254fae4e79432d43"
+  },
+  {
+    "spellId": 221699,
+    "icon": "spell_deathknight_bloodtap",
+    "source": "https://legion-shoot.tauri.hu/?spell=221699",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_deathknight_bloodtap.png",
+    "sha256": "bfe3b9968f4b7a5be0dca9f29776f8c1cd1aa6c4b2b77bc50b003fdd11147eb9"
+  },
+  {
+    "spellId": 234876,
+    "icon": "spell_shadow_deathsembrace",
+    "source": "https://legion-shoot.tauri.hu/?spell=234876",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_deathsembrace.png",
+    "sha256": "9908fdd10ac6b41eb6278d2fbcb22fec452d063f8755c10ec22f8851c60e0952"
+  },
+  {
+    "spellId": 235155,
+    "icon": "ability_warlock_everlastingaffliction",
+    "source": "https://legion-shoot.tauri.hu/?spell=235155",
+    "image": "https://legion-static.tauri.hu/images/icons/large/ability_warlock_everlastingaffliction.png",
+    "sha256": "51623bbdbb0a54a1a058db08d19e13acb37a97db236533bad057d8fefee91e07"
+  },
+  {
+    "spellId": 235157,
+    "icon": "spell_shadow_manafeed",
+    "source": "https://legion-shoot.tauri.hu/?spell=235157",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_shadow_manafeed.png",
+    "sha256": "f920ea87fee5346edca6ce8b24f19b271aa02b1cfd6e0762852ff8d530031b77"
+  },
+  {
+    "spellId": 246426,
+    "icon": "spell_frost_coldhearted",
+    "source": "https://legion-shoot.tauri.hu/?spell=246426",
+    "image": "https://legion-static.tauri.hu/images/icons/large/spell_frost_coldhearted.png",
+    "sha256": "2967967f16004cc1e48b316e6dfd67eee80ebbd95691e85a7cf85cd457c6720f"
+  },
+  {
+    "spellId": 253593,
+    "icon": "achievement_dungeon_icecrown_frostmourne",
+    "source": "https://legion-shoot.tauri.hu/?spell=253593",
+    "image": "https://legion-static.tauri.hu/images/icons/large/achievement_dungeon_icecrown_frostmourne.png",
+    "sha256": "509a2872e0378dd06ac111876de4fa362620f58644cd2f617e9c0eff76368b34"
+  }
+]
